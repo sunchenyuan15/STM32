@@ -33,7 +33,7 @@ void Timer_Init(void) //定时中断初始化
 	NVIC_InitTypeStructure.NVIC_IRQChannel = TIM2_IRQn;
 	NVIC_InitTypeStructure.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_InitTypeStructure.NVIC_IRQChannelPreemptionPriority = 2; //抢占优先级
-	NVIC_InitTypeStructure.NVIC_IRQChannelSubPriority = 1; //相应优先级
+	NVIC_InitTypeStructure.NVIC_IRQChannelSubPriority = 1; //响应优先级
 	
 	NVIC_Init(&NVIC_InitTypeStructure);
 	
