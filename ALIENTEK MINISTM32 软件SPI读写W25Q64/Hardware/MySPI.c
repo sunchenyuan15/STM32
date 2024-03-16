@@ -50,39 +50,39 @@ void MySPI_Stop(void)
 	MySPI_W_SS(1);
 }
 
-//½»»»Ò»¸ö×Ö½Ú Ä£Ê½0
+//äº¤æ¢ä¸€ä¸ªå­—èŠ‚ æ¨¡å¼0
 uint8_t MySPI_SwapByte(uint8_t ByteSend)
 {
 	uint8_t i, ByteReceive=0x00;
 	 
-//	MySPI_W_MOSI(ByteSend & 0x80); //×î¸ßÎ»·ÅÈëMOSI
+//	MySPI_W_MOSI(ByteSend & 0x80); //æœ€é«˜ä½æ”¾å…¥MOSI
 //	
 //	
 //	MySPI_W_SCK(1);
 //	if (MySPI_R_MISO()==1)
 //	{
-//		ByteReceive |= 0x80;//Ö÷»ú½ÓÊÜ´Ó»ú×î¸ßÎ»
+//		ByteReceive |= 0x80;//ä¸»æœºæ¥å—ä»æœºæœ€é«˜ä½
 //	}
 //	
 //	
 //	MySPI_W_SCK(0);
-//	MySPI_W_MOSI(ByteSend & 0x80); //´Î¸ßÎ»·ÅÈëMOSI
+//	MySPI_W_MOSI(ByteSend & 0x80); //æ¬¡é«˜ä½æ”¾å…¥MOSI
 //	
 //	
 //	MySPI_W_SCK(1);
 //	if (MySPI_R_MISO()==1)
 //	{
-//		ByteReceive |= 0x40;//Ö÷»ú½ÓÊÜ´Ó»ú´Î¸ßÎ»
+//		ByteReceive |= 0x40;//ä¸»æœºæ¥å—ä»æœºæ¬¡é«˜ä½
 //	}
 
-//ÑÚÂë²Ù×÷ ÒÀ´ÎÌô³öÃ¿Ò»Î»
+//æ©ç æ“ä½œ ä¾æ¬¡æŒ‘å‡ºæ¯ä¸€ä½
 	for(i=0; i<8; i++)
 	{
-		MySPI_W_MOSI(ByteSend & (0x80 >> i));//°´Î»Óë
+		MySPI_W_MOSI(ByteSend & (0x80 >> i));//æŒ‰ä½ä¸
 		MySPI_W_SCK(1);
 		if (MySPI_R_MISO()==1)
 		{
-			ByteReceive |= (0x80 >> i);//°´Î»»ò ByteReceive = ByteReceive | (0x80 >> i)
+			ByteReceive |= (0x80 >> i);//æŒ‰ä½æˆ– ByteReceive = ByteReceive | (0x80 >> i)
 		}
 		MySPI_W_SCK(0);	
 	}
@@ -90,18 +90,18 @@ uint8_t MySPI_SwapByte(uint8_t ByteSend)
 	return ByteReceive;
 }
 
-//ÒÆÎ»²Ù×÷
+//ç§»ä½æ“ä½œ
 uint8_t MySPI_SwapByte_2(uint8_t ByteSend)
 {
 	uint8_t i;
 	for(i=0; i<8; i++)
 	{
 		MySPI_W_MOSI(ByteSend & 0x80);
-		ByteSend <<= 1;//×óÒÆÒ»Î» µÍÎ»²¹0
+		ByteSend <<= 1;//å·¦ç§»ä¸€ä½ ä½ä½è¡¥0
 		MySPI_W_SCK(1);
 		if (MySPI_R_MISO()==1)
 		{
-			ByteSend |= 0x01;//·ÅÔÚ×îµÍÎ»
+			ByteSend |= 0x01;//æ”¾åœ¨æœ€ä½ä½
 		}
 		MySPI_W_SCK(0);	
 	}

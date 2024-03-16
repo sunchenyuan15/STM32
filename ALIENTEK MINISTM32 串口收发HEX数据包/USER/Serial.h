@@ -1,8 +1,8 @@
 #ifndef __Serial_H
 #define __Serial_H
 
-extern uint8_t Serial_TxPacket[];//·¢ËÍÔØºÉÊı¾İ
-extern uint8_t Serial_RxPacket[];//½ÓÊÜÔØºÉÊı¾İ
+extern uint8_t Serial_TxPacket[];//å‘é€è½½è·æ•°æ®
+extern uint8_t Serial_RxPacket[];//æ¥å—è½½è·æ•°æ®
 
 void Serial_Init(void);
 
@@ -16,7 +16,7 @@ void Serial_Sendnumber(uint32_t number, uint8_t length);
 
 void Serial_Printf(char *format, ...);
 
-uint8_t Serial_GetRxflag(void);//ÊÇ·ñ½ÓÊÜµ½Êı¾İ°ü
+uint8_t Serial_GetRxflag(void);//æ˜¯å¦æ¥å—åˆ°æ•°æ®åŒ…
 
 void Serial_SendPacket(void);
 #endif

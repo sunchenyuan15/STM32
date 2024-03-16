@@ -16,8 +16,8 @@ uint16_t AD0, AD1, AD2, AD3;
 int main(void)
 {
 	
-	delay_init();	    	 //ÑÓÊ±º¯Êı³õÊ¼»¯	  
-	uart_init(9600);	 	 //´®¿Ú³õÊ¼»¯Îª9600
+	delay_init();	    	 //å»¶æ—¶å‡½æ•°åˆå§‹åŒ–	  
+	uart_init(9600);	 	 //ä¸²å£åˆå§‹åŒ–ä¸º9600
 	LCD_Init();
 	
 	AD_Init();
@@ -36,10 +36,10 @@ int main(void)
 		AD2=AD_GetValue(ADC_Channel_2);
 		AD3=AD_GetValue(ADC_Channel_3);
 		
-		LCD_ShowxNum(100,40,AD0,4,24,0); //ÏÔÊ¾adcÊıÖµ
-		LCD_ShowxNum(100,70,AD1,4,24,0); //ÏÔÊ¾adcÊıÖµ
-		LCD_ShowxNum(100,100,AD2,4,24,0); //ÏÔÊ¾adcÊıÖµ
-		LCD_ShowxNum(100,130,AD3,4,24,0); //ÏÔÊ¾adcÊıÖµ
+		LCD_ShowxNum(100,40,AD0,4,24,0); //æ˜¾ç¤ºadcæ•°å€¼
+		LCD_ShowxNum(100,70,AD1,4,24,0); //æ˜¾ç¤ºadcæ•°å€¼
+		LCD_ShowxNum(100,100,AD2,4,24,0); //æ˜¾ç¤ºadcæ•°å€¼
+		LCD_ShowxNum(100,130,AD3,4,24,0); //æ˜¾ç¤ºadcæ•°å€¼
 		
 		delay_ms(100);
 	}

@@ -3,17 +3,17 @@
 
 void W25Q64_Init(void);
 
-//Ö¸ÕëÊµÏÖ¶à·µ»ØÖµ
+//æŒ‡é’ˆå®ç°å¤šè¿”å›å€¼
 void W25Q64_ReadID(uint8_t *MID, uint16_t *DID);
 
 
-//Ò³±à³ÌĞ´Êı¾İ //Ê¹ÓÃÖ¸Õë´«µİÊı×é Address 3¸ö×Ö½Ú
+//é¡µç¼–ç¨‹å†™æ•°æ® //ä½¿ç”¨æŒ‡é’ˆä¼ é€’æ•°ç»„ Address 3ä¸ªå­—èŠ‚
 void W25Q64_PageProgram(uint32_t Address, uint8_t *DataArray, uint16_t Count);
 
-//ÉÈÇø²Á³ı
+//æ‰‡åŒºæ“¦é™¤
 void W25Q64_SectorErase(uint32_t Address);
 
-//¶ÁÊı¾İ
+//è¯»æ•°æ®
 void W25Q64_ReadData(uint32_t Address, uint8_t *DataArray, uint32_t Count);
 #endif
 

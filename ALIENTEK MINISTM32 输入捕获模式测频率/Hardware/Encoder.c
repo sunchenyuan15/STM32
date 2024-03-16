@@ -10,29 +10,29 @@ void Encoder_Init(void)
 	EXTI_InitTypeDef EXIT_InitStructure;
 	NVIC_InitTypeDef NVIC_InitStructure;
 	
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);//¿ªÆôGPIOÊ±ÖÓ
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);//¿ªÆôAFIOÊ±ÖÓ
-	////EXTI NVICÊ±ÖÓÊ¼ÖÕ¿ªÆô
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);//å¼€å¯GPIOæ—¶é’Ÿ
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);//å¼€å¯AFIOæ—¶é’Ÿ
+	////EXTI NVICæ—¶é’Ÿå§‹ç»ˆå¼€å¯
 		
 	
-	//ÅäÖÃGPIO
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;//ÉÏÀ­ÊäÈë
+	//é…ç½®GPIO
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;//ä¸Šæ‹‰è¾“å…¥
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(GPIOB, &GPIO_InitStructure);
 	 
-	//ÅäÖÃAFIO
+	//é…ç½®AFIO
 	GPIO_EXTILineConfig(GPIO_PortSourceGPIOB, GPIO_PinSource0);
 	GPIO_EXTILineConfig(GPIO_PortSourceGPIOB, GPIO_PinSource1);
 	
-	//ÅäÖÃEXTI
+	//é…ç½®EXTI
 	EXIT_InitStructure.EXTI_Line = EXTI_Line0 | EXTI_Line1;
 	EXIT_InitStructure.EXTI_LineCmd = ENABLE;
 	EXIT_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;
-	EXIT_InitStructure.EXTI_Trigger = EXTI_Trigger_Falling;//ÏÂ½µÑØ´¥·¢
+	EXIT_InitStructure.EXTI_Trigger = EXTI_Trigger_Falling;//ä¸‹é™æ²¿è§¦å‘
 	EXTI_Init(&EXIT_InitStructure);
 	
-	//ÅäÖÃNVIC
+	//é…ç½®NVIC
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 	
 	NVIC_InitStructure.NVIC_IRQChannel = EXTI0_IRQn;

@@ -19,8 +19,8 @@ uint8_t Rxdata;
 int main(void)
 {
 	
-	delay_init();	    	 //ÑÓÊ±º¯Êı³õÊ¼»¯	  
-	uart_init(9600);	 	 //´®¿Ú³õÊ¼»¯Îª9600
+	delay_init();	    	 //å»¶æ—¶å‡½æ•°åˆå§‹åŒ–	  
+	uart_init(9600);	 	 //ä¸²å£åˆå§‹åŒ–ä¸º9600
 	LCD_Init();
 	POINT_COLOR=RED;
 	
@@ -51,7 +51,7 @@ int main(void)
 				
 				Serial_SendPacket();
 				
-				LCD_ShowxNum(30,80,Serial_TxPacket[0],2,24,0);//·¢ËÍÊı¾İ°ü				 
+				LCD_ShowxNum(30,80,Serial_TxPacket[0],2,24,0);//å‘é€æ•°æ®åŒ…				 
 				LCD_ShowxNum(60,80,Serial_TxPacket[1],2,24,0); 
 				LCD_ShowxNum(90,80,Serial_TxPacket[2],2,24,0); 
 				LCD_ShowxNum(120,80,Serial_TxPacket[3],2,24,0);
@@ -60,7 +60,7 @@ int main(void)
 		if(Serial_GetRxflag() == 1)
 			{
 
-				LCD_ShowxNum(30,160,Serial_RxPacket[0],2,24,0);//½ÓÊÜÊı¾İ°ü
+				LCD_ShowxNum(30,160,Serial_RxPacket[0],2,24,0);//æ¥å—æ•°æ®åŒ…
 				LCD_ShowxNum(60,160,Serial_RxPacket[1],2,24,0); 
 				LCD_ShowxNum(90,160,Serial_RxPacket[2],2,24,0); 
 				LCD_ShowxNum(120,160,Serial_RxPacket[3],2,24,0); 

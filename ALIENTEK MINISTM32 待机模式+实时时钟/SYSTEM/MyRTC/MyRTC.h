@@ -6,10 +6,10 @@ extern uint16_t MyRTC_Time[];
 
 void MyRTC_Init(void);
 
-//设置时间
+//璁剧疆鏃堕棿
 void MyRTC_SetTime(void);
 
-//读取时间
+//璇诲彇鏃堕棿
 void MyRTC_ReadTime(void);
 
 

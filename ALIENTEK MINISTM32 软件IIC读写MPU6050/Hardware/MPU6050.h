@@ -1,10 +1,10 @@
 #ifndef __MPU6050_H
 #define __MPU6050_H
 
-void MPU6050_WriteReg(uint8_t RegAddress, uint8_t Data);//Ö¸¶¨µØÖ·Ğ´Ò»¸ö×Ö½Ú
+void MPU6050_WriteReg(uint8_t RegAddress, uint8_t Data);//æŒ‡å®šåœ°å€å†™ä¸€ä¸ªå­—èŠ‚
 
 
-uint8_t MPU6050_ReadReg(uint8_t RegAddress);//Ö¸¶¨µØÖ·¶ÁÒ»¸ö×Ö½Ú
+uint8_t MPU6050_ReadReg(uint8_t RegAddress);//æŒ‡å®šåœ°å€è¯»ä¸€ä¸ªå­—èŠ‚
 
 	
 void MPU6050_Init(void);

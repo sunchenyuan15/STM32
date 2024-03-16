@@ -9,57 +9,57 @@ void MyRTC_Init(void)
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_BKP, ENABLE);
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_PWR, ENABLE);
 	
-	//Ê¹ÄÜBKP RTC·ÃÎÊ
+	//ä½¿èƒ½BKP RTCè®¿é—®
 	PWR_BackupAccessCmd(ENABLE);
 	
-	//BKPÊÇ·ñ´æÔÚ
+	//BKPæ˜¯å¦å­˜åœ¨
 	if(BKP_ReadBackupRegister(BKP_DR1) != 0xA5A5)
 	{
-		//¿ªÆôLSEÊ±ÖÓ
+		//å¼€å¯LSEæ—¶é’Ÿ
 		RCC_LSEConfig(RCC_LSE_ON);
 
-		//µÈ´ıLSEÊ±ÖÓÆô¶¯Íê³É
+		//ç­‰å¾…LSEæ—¶é’Ÿå¯åŠ¨å®Œæˆ
 		while(RCC_GetFlagStatus(RCC_FLAG_LSERDY) == RESET);
 
-		//Ñ¡Ôñ LSE ×÷ÎªRTCCLKÊ±ÖÓÔ´
+		//é€‰æ‹© LSE ä½œä¸ºRTCCLKæ—¶é’Ÿæº
 		RCC_RTCCLKConfig(RCC_RTCCLKSource_LSE);
 
-		//Ê¹ÄÜ
+		//ä½¿èƒ½
 		RCC_RTCCLKCmd(ENABLE);
 
-		//µÈ´ıÍ¬²½
+		//ç­‰å¾…åŒæ­¥
 		RTC_WaitForSynchro();
 
-		//µÈ´ıÉÏÒ»´ÎĞ´Èë²Ù×÷Íê³É
+		//ç­‰å¾…ä¸Šä¸€æ¬¡å†™å…¥æ“ä½œå®Œæˆ
 		RTC_WaitForLastTask();
 
 		//32768Hz -> 1Hz
 		RTC_SetPrescaler(32768 - 1);
 
-		//µÈ´ıÉÏÒ»´ÎĞ´Èë²Ù×÷Íê³É
+		//ç­‰å¾…ä¸Šä¸€æ¬¡å†™å…¥æ“ä½œå®Œæˆ
 		RTC_WaitForLastTask();
 
-		//³õÊ¼»¯Ê±¼ä
+		//åˆå§‹åŒ–æ—¶é—´
 		RTC_SetCounter(1672588795);//Beijing 2023-1-1 23:59:55
 
-		//µÈ´ıÉÏÒ»´ÎĞ´Èë²Ù×÷Íê³É
+		//ç­‰å¾…ä¸Šä¸€æ¬¡å†™å…¥æ“ä½œå®Œæˆ
 		RTC_WaitForLastTask();
 		
-		//Ğ´BKP¼Ä´æÆ÷
+		//å†™BKPå¯„å­˜å™¨
 		BKP_WriteBackupRegister(BKP_DR1, 0xA5A5);
 	}
 	else
 	{
-		//µÈ´ıÍ¬²½
+		//ç­‰å¾…åŒæ­¥
 		RTC_WaitForSynchro();
 
-		//µÈ´ıÉÏÒ»´ÎĞ´Èë²Ù×÷Íê³É
+		//ç­‰å¾…ä¸Šä¸€æ¬¡å†™å…¥æ“ä½œå®Œæˆ
 		RTC_WaitForLastTask();
 	}	
 
 }
 
-//ÉèÖÃÊ±¼ä
+//è®¾ç½®æ—¶é—´
 void MyRTC_SetTime(void)
 {
 	time_t time_cnt;
@@ -71,25 +71,25 @@ void MyRTC_SetTime(void)
 	time_date.tm_min = MyRTC_Time[4];
 	time_date.tm_sec = MyRTC_Time[5];
 	
-	//ÈÕÆÚÊ±¼äÊı¾İÀàĞÍ -> Ãë¼ÆÊıÆ÷Êı¾İÀàĞÍ
+	//æ—¥æœŸæ—¶é—´æ•°æ®ç±»å‹ -> ç§’è®¡æ•°å™¨æ•°æ®ç±»å‹
 	time_cnt = mktime(&time_date);
 	
-	//Ğ´ÈëCNT
+	//å†™å…¥CNT
 	RTC_SetCounter(time_cnt - 8*60*60);
 	
-	//µÈ´ıÉÏÒ»´ÎĞ´Èë²Ù×÷Íê³É
+	//ç­‰å¾…ä¸Šä¸€æ¬¡å†™å…¥æ“ä½œå®Œæˆ
 	RTC_WaitForLastTask();
 	
 }
 
-//¶ÁÈ¡Ê±¼ä
+//è¯»å–æ—¶é—´
 void MyRTC_ReadTime(void)
 {
 	// unsigned int(uint32_t) time_t; 
 	time_t time_cnt;
 	struct tm time_date;
 	
-	time_cnt = RTC_GetCounter() + 8*60*60;//×ªÎª ¶«°ËÇø ±±¾©Ê±¼ä
+	time_cnt = RTC_GetCounter() + 8*60*60;//è½¬ä¸º ä¸œå…«åŒº åŒ—äº¬æ—¶é—´
 	
 	time_date = *localtime(&time_cnt);
 	

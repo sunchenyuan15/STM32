@@ -21,15 +21,15 @@ int16_t AX, AY, AZ, GX, GY, GZ;
 int main(void)
 {
 	
-	delay_init();	    	 //ÑÓÊ±º¯Êı³õÊ¼»¯	  
-	uart_init(9600);	 	 //´®¿Ú³õÊ¼»¯Îª9600
+	delay_init();	    	 //å»¶æ—¶å‡½æ•°åˆå§‹åŒ–	  
+	uart_init(9600);	 	 //ä¸²å£åˆå§‹åŒ–ä¸º9600
 	LCD_Init();
 	POINT_COLOR=RED;
 	
 	
 	MPU6050_Init();
 	
-//	MPU6050_WriteReg(0x6B, 0x00);//µçÔ´¹ÜÀí¼Ä´æÆ÷Ğ´1£¬½â³ıË¯ÃßÄ£Ê½
+//	MPU6050_WriteReg(0x6B, 0x00);//ç”µæºç®¡ç†å¯„å­˜å™¨å†™1ï¼Œè§£é™¤ç¡çœ æ¨¡å¼
 	
 //	uint8_t ID = MPU6050_ReadReg(0x75);
 	

@@ -25,7 +25,7 @@ void IC_Init(void)
 	TIM_TimeBaseInit(TIM3, &TIM_TimeBaseInitStructure);
 	
 	
-	//³õÊ¼»¯ÊäÈë²¶»ñµ¥Ôª
+	//åˆå§‹åŒ–è¾“å…¥æ•è·å•å…ƒ
 	TIM_ICInitTypeDef TIM_ICInitStructure;
 	TIM_ICInitStructure.TIM_Channel = TIM_Channel_1;
 	TIM_ICInitStructure.TIM_ICFilter = 0xF;

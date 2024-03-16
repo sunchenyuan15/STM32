@@ -15,8 +15,8 @@ uint16_t num; //(unsigned short)
 int main(void)
 {
 	
-	delay_init();	    	 //ÑÓÊ±º¯Êı³õÊ¼»¯	  
-	uart_init(9600);	 	 //´®¿Ú³õÊ¼»¯Îª9600
+	delay_init();	    	 //å»¶æ—¶å‡½æ•°åˆå§‹åŒ–	  
+	uart_init(9600);	 	 //ä¸²å£åˆå§‹åŒ–ä¸º9600
 	LCD_Init();
 //	Encoder_Init();
 	
@@ -29,9 +29,9 @@ int main(void)
 
 	while(1)
 	{
-		LCD_ShowxNum(100,70,CountSensor_Get(),5,24,0); //ÏÔÊ¾Êı×Ö
+		LCD_ShowxNum(100,70,CountSensor_Get(),5,24,0); //æ˜¾ç¤ºæ•°å­—
 //		num += Encoder_Get();
-//		LCD_ShowxNum(100,70,num,5,24,0); //ÏÔÊ¾Êı×Ö
+//		LCD_ShowxNum(100,70,num,5,24,0); //æ˜¾ç¤ºæ•°å­—
 		
 	}
 }

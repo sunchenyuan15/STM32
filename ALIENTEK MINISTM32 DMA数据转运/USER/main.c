@@ -19,8 +19,8 @@ uint8_t DataB[] = {0, 0, 0, 0};
 int main(void)
 {
 	
-	delay_init();	    	 //ÑÓÊ±º¯Êı³õÊ¼»¯	  
-	uart_init(9600);	 	 //´®¿Ú³õÊ¼»¯Îª9600
+	delay_init();	    	 //å»¶æ—¶å‡½æ•°åˆå§‹åŒ–	  
+	uart_init(9600);	 	 //ä¸²å£åˆå§‹åŒ–ä¸º9600
 	LCD_Init();
 	POINT_COLOR=RED;
 

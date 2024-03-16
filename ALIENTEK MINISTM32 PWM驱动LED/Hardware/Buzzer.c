@@ -1,5 +1,5 @@
 
-//´æ·ÅÇı¶¯³ÌĞòµÄÖ÷Ìå´úÂë
+//å­˜æ”¾é©±åŠ¨ç¨‹åºçš„ä¸»ä½“ä»£ç 
 #include "stm32f10x.h"                  // Device header
 
 void Buzzer_Init(void)

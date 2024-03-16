@@ -8,7 +8,7 @@ void MySPI_Start(void);
 
 void MySPI_Stop(void);
 
-//½»»»Ò»¸ö×Ö½Ú Ä£Ê½0
+//äº¤æ¢ä¸€ä¸ªå­—èŠ‚ æ¨¡å¼0
 uint8_t MySPI_SwapByte(uint8_t ByteSend);
 
 

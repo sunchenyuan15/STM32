@@ -10,10 +10,10 @@ uint16_t MyFLASH_ReadHalfWord(uint32_t Address);
 uint8_t MyFLASH_ReadByte(uint32_t Address);
 
 
-//È«²Á³ý
+//å…¨æ“¦é™¤
 void MyFlash_EraseAllPages(void);
 
-//Ò³²Á³ý
+//é¡µæ“¦é™¤
 void MyFlash_ErasePage(uint32_t PageAddress);
 
 void MyFlash_ProgramWord(uint32_t Address, uint32_t Data);

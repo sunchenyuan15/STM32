@@ -1,24 +1,24 @@
 #include "stm32f10x.h"                  // Device header
 
-//¶ÁÈ¡
+//è¯»å–
 uint32_t MyFLASH_ReadWord(uint32_t Address)
 {
-	return *((__IO uint32_t *)(Address));	//Ê¹ÓÃÖ¸Õë·ÃÎÊÖ¸¶¨µØÖ·ÏÂµÄÊı¾İ²¢·µ»Ø
+	return *((__IO uint32_t *)(Address));	//ä½¿ç”¨æŒ‡é’ˆè®¿é—®æŒ‡å®šåœ°å€ä¸‹çš„æ•°æ®å¹¶è¿”å›
 }
 
 
 uint16_t MyFLASH_ReadHalfWord(uint32_t Address)
 {
-	return *((__IO uint16_t *)(Address));	//Ê¹ÓÃÖ¸Õë·ÃÎÊÖ¸¶¨µØÖ·ÏÂµÄÊı¾İ²¢·µ»Ø
+	return *((__IO uint16_t *)(Address));	//ä½¿ç”¨æŒ‡é’ˆè®¿é—®æŒ‡å®šåœ°å€ä¸‹çš„æ•°æ®å¹¶è¿”å›
 }
 
 
 uint8_t MyFLASH_ReadByte(uint32_t Address)
 {
-	return *((__IO uint8_t *)(Address));	//Ê¹ÓÃÖ¸Õë·ÃÎÊÖ¸¶¨µØÖ·ÏÂµÄÊı¾İ²¢·µ»Ø
+	return *((__IO uint8_t *)(Address));	//ä½¿ç”¨æŒ‡é’ˆè®¿é—®æŒ‡å®šåœ°å€ä¸‹çš„æ•°æ®å¹¶è¿”å›
 }
 
-//È«²Á³ı
+//å…¨æ“¦é™¤
 void MyFlash_EraseAllPages(void)
 {
 	FLASH_Unlock();
@@ -27,7 +27,7 @@ void MyFlash_EraseAllPages(void)
 	
 }
 
-//Ò³²Á³ı
+//é¡µæ“¦é™¤
 void MyFlash_ErasePage(uint32_t PageAddress)
 {
 	FLASH_Unlock();
@@ -36,7 +36,7 @@ void MyFlash_ErasePage(uint32_t PageAddress)
 	
 }
 
-//±à³Ì
+//ç¼–ç¨‹
 void MyFlash_ProgramWord(uint32_t Address, uint32_t Data)
 {
 	FLASH_Unlock();

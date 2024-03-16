@@ -7,10 +7,10 @@ void MOTOR_Init(void)
 	
 	
 	GPIO_InitTypeDef GPIO_InitStructure;
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);//¿ªÆôÊ±ÖÓ
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);//å¼€å¯æ—¶é’Ÿ
 
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;//ÉÏÀ­ÊäÈë
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4 | GPIO_Pin_5; //¿ØÖÆµç»ú·½Ïò
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;//ä¸Šæ‹‰è¾“å…¥
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4 | GPIO_Pin_5; //æŽ§åˆ¶ç”µæœºæ–¹å‘
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
 	
@@ -18,7 +18,7 @@ void MOTOR_Init(void)
 
 void MOTOR_SetSpeed(int8_t speed)
 {
-	if(speed >= 0)//Õý×ª
+	if(speed >= 0)//æ­£è½¬
 	{
 		GPIO_SetBits(GPIOA, GPIO_Pin_4);
 		GPIO_ResetBits(GPIOA, GPIO_Pin_5);

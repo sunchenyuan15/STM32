@@ -8,12 +8,12 @@ void MyIIC_Start(void);
 
 void MyIIC_Stop(void);
 
-void MyIIC_SendByte(uint8_t Byte);//·¢ËÍÒ»¸ö×Ö½Ú
+void MyIIC_SendByte(uint8_t Byte);//å‘é€ä¸€ä¸ªå­—èŠ‚
 
-uint8_t MyI2C_ReceiveByte(void);//½ÓÊÜÒ»¸ö×Ö½Ú
+uint8_t MyI2C_ReceiveByte(void);//æ¥å—ä¸€ä¸ªå­—èŠ‚
 
-void MyIIC_SendAck(uint8_t AckBit);//·¢ËÍÓ¦´ğ
+void MyIIC_SendAck(uint8_t AckBit);//å‘é€åº”ç­”
 
-uint8_t MyI2C_ReceiveAck(void);////½ÓÊÜÓ¦´ğ
+uint8_t MyI2C_ReceiveAck(void);////æ¥å—åº”ç­”
 
 #endif

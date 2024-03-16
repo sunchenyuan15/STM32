@@ -8,18 +8,18 @@ void MyDMA_Init(uint32_t AddrA, uint32_t AddrB, uint16_t Size)
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1, ENABLE);
 	
 	DMA_InitTypeDef DMA_InitStructure;	
-	DMA_InitStructure.DMA_PeripheralBaseAddr = AddrA;//ÍâÉèÕ¾µãÆğÊ¼µØÖ·
-	DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte;//Êı¾İ¿í¶È
-	DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Enable;//ÊÇ·ñ×ÔÔö
-	DMA_InitStructure.DMA_MemoryBaseAddr = AddrB;//´æ´¢Æ÷Õ¾µãÆğÊ¼µØÖ·
-	DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;//Êı¾İ¿í¶È
-	DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;//ÊÇ·ñ×ÔÔö	
+	DMA_InitStructure.DMA_PeripheralBaseAddr = AddrA;//å¤–è®¾ç«™ç‚¹èµ·å§‹åœ°å€
+	DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte;//æ•°æ®å®½åº¦
+	DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Enable;//æ˜¯å¦è‡ªå¢
+	DMA_InitStructure.DMA_MemoryBaseAddr = AddrB;//å­˜å‚¨å™¨ç«™ç‚¹èµ·å§‹åœ°å€
+	DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;//æ•°æ®å®½åº¦
+	DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;//æ˜¯å¦è‡ªå¢	
 
-	DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralSRC;//´«Êä·½Ïò //ÍâÉèÕ¾µã×÷Êı¾İÔ´¶Ë
-	DMA_InitStructure.DMA_BufferSize = Size;//´«Êä¼ÆÊıÆ÷
-	DMA_InitStructure.DMA_Mode = DMA_Mode_Normal;//²»×Ô¶¯ÖØ×°
-	DMA_InitStructure.DMA_M2M = DMA_M2M_Enable;//Èí¼ş´¥·¢	
-	DMA_InitStructure.DMA_Priority = DMA_Priority_Medium;//ÖĞµÈÓÅÏÈ¼¶
+	DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralSRC;//ä¼ è¾“æ–¹å‘ //å¤–è®¾ç«™ç‚¹ä½œæ•°æ®æºç«¯
+	DMA_InitStructure.DMA_BufferSize = Size;//ä¼ è¾“è®¡æ•°å™¨
+	DMA_InitStructure.DMA_Mode = DMA_Mode_Normal;//ä¸è‡ªåŠ¨é‡è£…
+	DMA_InitStructure.DMA_M2M = DMA_M2M_Enable;//è½¯ä»¶è§¦å‘	
+	DMA_InitStructure.DMA_Priority = DMA_Priority_Medium;//ä¸­ç­‰ä¼˜å…ˆçº§
 	
 	DMA_Init(DMA1_Channel1, &DMA_InitStructure);
 	
@@ -32,8 +32,8 @@ void MyDMA_Transfer(void)
 	DMA_Cmd(DMA1_Channel1, DISABLE);
 	DMA_SetCurrDataCounter(DMA1_Channel1, DMA_Size);
 	DMA_Cmd(DMA1_Channel1, ENABLE);
-	while (DMA_GetFlagStatus(DMA1_FLAG_TC1) == RESET); //×ªÔËÍê³É±êÖ¾Î»
-	DMA_ClearFlag(DMA1_FLAG_TC1);//Çå³ı±êÖ¾Î»	
+	while (DMA_GetFlagStatus(DMA1_FLAG_TC1) == RESET); //è½¬è¿å®Œæˆæ ‡å¿—ä½
+	DMA_ClearFlag(DMA1_FLAG_TC1);//æ¸…é™¤æ ‡å¿—ä½	
 }
 
 

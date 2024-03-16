@@ -2,7 +2,7 @@
 #define __Serial_H
 
 
-extern int8_t Serial_RxPacket[];//接受载荷数据
+extern int8_t Serial_RxPacket[];//鎺ュ彈杞借嵎鏁版嵁
 extern uint8_t Serial_Rxflag;
 
 void Serial_Init(void);
@@ -17,7 +17,7 @@ void Serial_Sendnumber(uint32_t number, uint8_t length);
 
 void Serial_Printf(char *format, ...);
 
-//uint8_t Serial_GetRxflag(void);//是否接受到数据包
+//uint8_t Serial_GetRxflag(void);//鏄惁鎺ュ彈鍒版暟鎹寘
 
 #endif
 

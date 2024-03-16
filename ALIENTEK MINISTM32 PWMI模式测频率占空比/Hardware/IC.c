@@ -14,7 +14,7 @@ void IC_Init(void)
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
 	
 	
-	//ÅäÖÃÊ±»ùµ¥Ôª
+	//é…ç½®æ—¶åŸºå•å…ƒ
 	TIM_InternalClockConfig(TIM3);
 	
 	
@@ -27,7 +27,7 @@ void IC_Init(void)
 	TIM_TimeBaseInit(TIM3, &TIM_TimeBaseInitStructure);
 	
 	
-	//³õÊ¼»¯ÊäÈë²¶»ñµ¥Ôª£ºÁ½¸öÍ¨µÀÍ¬Ê±²¶»ñÍ¬Ò»¸öÒı½Å
+	//åˆå§‹åŒ–è¾“å…¥æ•è·å•å…ƒï¼šä¸¤ä¸ªé€šé“åŒæ—¶æ•è·åŒä¸€ä¸ªå¼•è„š
 	TIM_ICInitTypeDef TIM_ICInitStructure;
 	TIM_ICInitStructure.TIM_Channel = TIM_Channel_1;
 	TIM_ICInitStructure.TIM_ICFilter = 0xF;

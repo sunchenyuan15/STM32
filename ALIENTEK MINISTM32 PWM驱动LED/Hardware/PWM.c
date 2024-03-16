@@ -7,11 +7,11 @@ void PWM_Init(void)
 	TIM_OCInitTypeDef TIM_OCInitStructure;
 	
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM1, ENABLE);
-	TIM_InternalClockConfig(TIM1);//ÅäÖÃÊ±»ùµ¥ÔªÊ±ÖÓ
+	TIM_InternalClockConfig(TIM1);//é…ç½®æ—¶åŸºå•å…ƒæ—¶é’Ÿ
 	
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
 	
-	/*Òı½ÅÖØÓ³Éä
+	/*å¼•è„šé‡æ˜ å°„
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);
 	GPIO_PinRemapConfig(GPIO_PartialRemap1_TIM2, ENABLE);
 	GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable, ENABLE);
@@ -24,13 +24,13 @@ void PWM_Init(void)
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
 	
 	
-	TIM_TimeBaseInitStructure.TIM_ClockDivision = TIM_CKD_DIV1; //²ÉÑùÊ±ÖÓ·ÖÆµ 
-	TIM_TimeBaseInitStructure.TIM_CounterMode = TIM_CounterMode_Up; //¼ÆÊıÆ÷Ä£Ê½:ÏòÉÏ¼ÆÊı
+	TIM_TimeBaseInitStructure.TIM_ClockDivision = TIM_CKD_DIV1; //é‡‡æ ·æ—¶é’Ÿåˆ†é¢‘ 
+	TIM_TimeBaseInitStructure.TIM_CounterMode = TIM_CounterMode_Up; //è®¡æ•°å™¨æ¨¡å¼:å‘ä¸Šè®¡æ•°
 	
-	//Ê±»ùµ¥Ôª¼Ä´æÆ÷ÊıÖµ
-	TIM_TimeBaseInitStructure.TIM_Period = 100 - 1; //ARR×Ô¶¯ÖØ×°Æ÷
-	TIM_TimeBaseInitStructure.TIM_Prescaler = 720 - 1; //PSCÔ¤·ÖÅäÆ÷
-	TIM_TimeBaseInitStructure.TIM_RepetitionCounter = 0; //REPÖØ¸´´ÎÊı¼ÆÊıÆ÷   
+	//æ—¶åŸºå•å…ƒå¯„å­˜å™¨æ•°å€¼
+	TIM_TimeBaseInitStructure.TIM_Period = 100 - 1; //ARRè‡ªåŠ¨é‡è£…å™¨
+	TIM_TimeBaseInitStructure.TIM_Prescaler = 720 - 1; //PSCé¢„åˆ†é…å™¨
+	TIM_TimeBaseInitStructure.TIM_RepetitionCounter = 0; //REPé‡å¤æ¬¡æ•°è®¡æ•°å™¨   
 	TIM_TimeBaseInit(TIM1, &TIM_TimeBaseInitStructure);
 	
 	
@@ -43,15 +43,15 @@ void PWM_Init(void)
 	
 	TIM_OC1Init(TIM1, &TIM_OCInitStructure);
 	
-	TIM_CtrlPWMOutputs(TIM1,ENABLE);	//MOE Ö÷Êä³öÊ¹ÄÜ	
+	TIM_CtrlPWMOutputs(TIM1,ENABLE);	//MOE ä¸»è¾“å‡ºä½¿èƒ½	
 
-	TIM_OC1PreloadConfig(TIM1, TIM_OCPreload_Enable);  //CH1Ô¤×°ÔØÊ¹ÄÜ	 
+	TIM_OC1PreloadConfig(TIM1, TIM_OCPreload_Enable);  //CH1é¢„è£…è½½ä½¿èƒ½	 
 	
-	TIM_ARRPreloadConfig(TIM1, ENABLE); //Ê¹ÄÜTIMxÔÚARRÉÏµÄÔ¤×°ÔØ¼Ä´æÆ÷
+	TIM_ARRPreloadConfig(TIM1, ENABLE); //ä½¿èƒ½TIMxåœ¨ARRä¸Šçš„é¢„è£…è½½å¯„å­˜å™¨
 	
 	
 	
-	TIM_Cmd(TIM1, ENABLE); //Æô¶¯¶¨Ê±Æ÷
+	TIM_Cmd(TIM1, ENABLE); //å¯åŠ¨å®šæ—¶å™¨
 }
 
 

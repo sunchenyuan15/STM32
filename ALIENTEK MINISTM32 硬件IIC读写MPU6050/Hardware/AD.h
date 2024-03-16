@@ -2,7 +2,7 @@
 #define __AD_H
 
 
-extern uint16_t AD_Value[4];//Íâ²¿¿Éµ÷ÓÃ
+extern uint16_t AD_Value[4];//å¤–éƒ¨å¯è°ƒç”¨
 
 void AD_Init(void);
 

@@ -3,14 +3,15 @@
         {
             "name": "Template",
             "includePath": [
-                "d:\\STM32Project\\ALIENTEK MINISTM32 LED 流水灯\\USER",
-                "d:\\STM32Project\\ALIENTEK MINISTM32 LED 流水灯\\CORE",
-                "d:\\STM32Project\\ALIENTEK MINISTM32 LED 流水灯\\STM32F10x_FWLib\\inc",
-                "d:\\STM32Project\\ALIENTEK MINISTM32 LED 流水灯\\SYSTEM\\delay",
-                "d:\\STM32Project\\ALIENTEK MINISTM32 LED 流水灯\\SYSTEM\\sys",
-                "d:\\STM32Project\\ALIENTEK MINISTM32 LED 流水灯\\SYSTEM\\usart",
-                "d:\\STM32Project\\ALIENTEK MINISTM32 LED 流水灯\\STM32F10x_FWLib\\src",
-                "d:\\STM32Project\\ALIENTEK MINISTM32 LED 流水灯"
+                "d:\\STM32Project\\STM32-Basic-Tutorials Local Repository\\ALIENTEK MINISTM32 LED 流水灯\\USER",
+                "d:\\STM32Project\\STM32-Basic-Tutorials Local Repository\\ALIENTEK MINISTM32 LED 流水灯\\CORE",
+                "d:\\STM32Project\\STM32-Basic-Tutorials Local Repository\\ALIENTEK MINISTM32 LED 流水灯\\STM32F10x_FWLib\\inc",
+                "d:\\STM32Project\\STM32-Basic-Tutorials Local Repository\\ALIENTEK MINISTM32 LED 流水灯\\SYSTEM\\delay",
+                "d:\\STM32Project\\STM32-Basic-Tutorials Local Repository\\ALIENTEK MINISTM32 LED 流水灯\\SYSTEM\\sys",
+                "d:\\STM32Project\\STM32-Basic-Tutorials Local Repository\\ALIENTEK MINISTM32 LED 流水灯\\SYSTEM\\usart",
+                "D:\\Keil_v5\\ARM\\ARMCC\\include",
+                "D:\\Keil_v5\\ARM\\ARMCC\\include\\rw",
+                "d:\\STM32Project\\STM32-Basic-Tutorials Local Repository\\ALIENTEK MINISTM32 LED 流水灯\\STM32F10x_FWLib\\src"
             ],
             "defines": [
                 "STM32F10X_HD",

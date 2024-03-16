@@ -26,18 +26,18 @@ uint16_t DR;
 int main(void)
 {
 	
-	delay_init();	    	 //ÑÓÊ±º¯Êı³õÊ¼»¯	  
-	uart_init(9600);	 	 //´®¿Ú³õÊ¼»¯Îª9600
+	delay_init();	    	 //å»¶æ—¶å‡½æ•°åˆå§‹åŒ–	  
+	uart_init(9600);	 	 //ä¸²å£åˆå§‹åŒ–ä¸º9600
 	LCD_Init();
 	POINT_COLOR=RED;
 	
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_BKP, ENABLE);
-	RCC_APB1PeriphClockCmd(RCC_APB1Periph_PWR, ENABLE);//RCC(Reset and Clock Control ¸´Î»ºÍÊ±ÖÓ¿ØÖÆ),peripheral-ÍâÉè
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_PWR, ENABLE);//RCC(Reset and Clock Control å¤ä½å’Œæ—¶é’Ÿæ§åˆ¶),peripheral-å¤–è®¾
 	
 	PWR_BackupAccessCmd(ENABLE);
 	
-	BKP_WriteBackupRegister(BKP_DR1, ArrayWrite[0]);//Ğ´Èë¼Ä´æÆ÷
-	BKP_WriteBackupRegister(BKP_DR2, ArrayWrite[1]);//¶ÁÈ¡¼Ä´æÆ÷
+	BKP_WriteBackupRegister(BKP_DR1, ArrayWrite[0]);//å†™å…¥å¯„å­˜å™¨
+	BKP_WriteBackupRegister(BKP_DR2, ArrayWrite[1]);//è¯»å–å¯„å­˜å™¨
 	
 	ArrayRead[0] = BKP_ReadBackupRegister(BKP_DR1);
 	ArrayRead[1] = BKP_ReadBackupRegister(BKP_DR2);

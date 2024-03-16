@@ -19,8 +19,8 @@ float angle;
 int main(void)
 {
 	
-	delay_init();	    	 //ÑÓÊ±º¯Êı³õÊ¼»¯	
-	uart_init(9600);	 	 //´®¿Ú³õÊ¼»¯Îª9600	
+	delay_init();	    	 //å»¶æ—¶å‡½æ•°åˆå§‹åŒ–	
+	uart_init(9600);	 	 //ä¸²å£åˆå§‹åŒ–ä¸º9600	
     LCD_Init();
 	
 	Servo_Init();
@@ -31,7 +31,7 @@ int main(void)
 
 	while(1)
 	{
-		LCD_ShowxNum(90,70,angle,5,24,0); //ÏÔÊ¾Êı×Ö
+		LCD_ShowxNum(90,70,angle,5,24,0); //æ˜¾ç¤ºæ•°å­—
 		Keynum = Key_GetNum();
 		if (Keynum == 1)
 		{

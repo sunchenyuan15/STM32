@@ -29,17 +29,17 @@ void MyIIC_Init(void)
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
 	
 	GPIO_InitTypeDef GPIO_InitStructure;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_OD;//¿ªÂ©Êä³ö
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_OD;//å¼€æ¼è¾“å‡º
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_10|GPIO_Pin_11;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(GPIOB, &GPIO_InitStructure);
-	//SCL SDAÖÃ¸ßµçÆ½
+	//SCL SDAç½®é«˜ç”µå¹³
 	GPIO_SetBits(GPIOB, GPIO_Pin_10|GPIO_Pin_11);
 }
 
 void MyIIC_Start(void)
 {
-	//ÆğÊ¼Ìõ¼ş
+	//èµ·å§‹æ¡ä»¶
 	MyIIC_W_SDA(1);
 	MyIIC_W_SCL(1);
 
@@ -51,28 +51,28 @@ void MyIIC_Start(void)
 
 void MyIIC_Stop(void)
 {
-	//ÖÕÖ¹Ìõ¼ş
+	//ç»ˆæ­¢æ¡ä»¶
 	MyIIC_W_SDA(0);
 	MyIIC_W_SCL(1);
 	MyIIC_W_SDA(1);
 	
 }
 
-void MyIIC_SendByte(uint8_t Byte)//·¢ËÍÒ»¸ö×Ö½Ú
+void MyIIC_SendByte(uint8_t Byte)//å‘é€ä¸€ä¸ªå­—èŠ‚
 {
 	
 	uint8_t i;
 	for (i=0; i<8; i++)
 	{
-		MyIIC_W_SDA(Byte & (0x80 >> i));//È¡×î¸ßÎ» ¸ßÎ»ÏÈĞĞ
+		MyIIC_W_SDA(Byte & (0x80 >> i));//å–æœ€é«˜ä½ é«˜ä½å…ˆè¡Œ
 		MyIIC_W_SCL(1);
-		MyIIC_W_SCL(0);//Çı¶¯Ê±ÖÓÒ»¸öÂö³å
+		MyIIC_W_SCL(0);//é©±åŠ¨æ—¶é’Ÿä¸€ä¸ªè„‰å†²
 		
 	}
 }
 
 
-uint8_t MyI2C_ReceiveByte(void)//½ÓÊÜÒ»¸ö×Ö½Ú
+uint8_t MyI2C_ReceiveByte(void)//æ¥å—ä¸€ä¸ªå­—èŠ‚
 {
 	uint8_t i, Byte = 0x00;
 	MyIIC_W_SDA(1);
@@ -90,16 +90,16 @@ uint8_t MyI2C_ReceiveByte(void)//½ÓÊÜÒ»¸ö×Ö½Ú
 
 }
 
-void MyIIC_SendAck(uint8_t AckBit)//·¢ËÍÓ¦´ğ
+void MyIIC_SendAck(uint8_t AckBit)//å‘é€åº”ç­”
 {
 	MyIIC_W_SDA(AckBit);
 	MyIIC_W_SCL(1);
-	MyIIC_W_SCL(0);//Çı¶¯Ê±ÖÓÒ»¸öÂö³å		
+	MyIIC_W_SCL(0);//é©±åŠ¨æ—¶é’Ÿä¸€ä¸ªè„‰å†²
 
 }
 
 
-uint8_t MyI2C_ReceiveAck(void)////½ÓÊÜÓ¦´ğ
+uint8_t MyI2C_ReceiveAck(void)////æ¥å—åº”ç­”
 {
 	uint8_t AckBit;
 	MyIIC_W_SDA(1);

@@ -10,7 +10,7 @@ void PWM_Init(void)
 	TIM_OCInitTypeDef TIM_OCInitStructure;
 	
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
-	TIM_InternalClockConfig(TIM2);//ÅäÖÃÊ±»ùµ¥ÔªÊ±ÖÓ
+	TIM_InternalClockConfig(TIM2);//é…ç½®æ—¶åŸºå•å…ƒæ—¶é’Ÿ
 	
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
 
@@ -21,13 +21,13 @@ void PWM_Init(void)
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
 	
 	
-	TIM_TimeBaseInitStructure.TIM_ClockDivision = TIM_CKD_DIV1; //²ÉÑùÊ±ÖÓ·ÖÆµ 
-	TIM_TimeBaseInitStructure.TIM_CounterMode = TIM_CounterMode_Up; //¼ÆÊıÆ÷Ä£Ê½:ÏòÉÏ¼ÆÊı
+	TIM_TimeBaseInitStructure.TIM_ClockDivision = TIM_CKD_DIV1; //é‡‡æ ·æ—¶é’Ÿåˆ†é¢‘ 
+	TIM_TimeBaseInitStructure.TIM_CounterMode = TIM_CounterMode_Up; //è®¡æ•°å™¨æ¨¡å¼:å‘ä¸Šè®¡æ•°
 	
-	//Ê±»ùµ¥Ôª¼Ä´æÆ÷ÊıÖµ
-	TIM_TimeBaseInitStructure.TIM_Period = 20000 - 1; //ARR×Ô¶¯ÖØ×°Æ÷
-	TIM_TimeBaseInitStructure.TIM_Prescaler = 72 - 1; //PSCÔ¤·ÖÅäÆ÷
-	TIM_TimeBaseInitStructure.TIM_RepetitionCounter = 0; //REPÖØ¸´´ÎÊı¼ÆÊıÆ÷   
+	//æ—¶åŸºå•å…ƒå¯„å­˜å™¨æ•°å€¼
+	TIM_TimeBaseInitStructure.TIM_Period = 20000 - 1; //ARRè‡ªåŠ¨é‡è£…å™¨
+	TIM_TimeBaseInitStructure.TIM_Prescaler = 72 - 1; //PSCé¢„åˆ†é…å™¨
+	TIM_TimeBaseInitStructure.TIM_RepetitionCounter = 0; //REPé‡å¤æ¬¡æ•°è®¡æ•°å™¨   
 	TIM_TimeBaseInit(TIM2, &TIM_TimeBaseInitStructure);
 	
 	
@@ -38,17 +38,17 @@ void PWM_Init(void)
 	TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
 	TIM_OCInitStructure.TIM_Pulse = 0; //CCR
 	
-	TIM_OC2Init(TIM2, &TIM_OCInitStructure);//Í¨µÀ2
+	TIM_OC2Init(TIM2, &TIM_OCInitStructure);//é€šé“2
 	
-	TIM_CtrlPWMOutputs(TIM2,ENABLE);	//MOE Ö÷Êä³öÊ¹ÄÜ	
+	TIM_CtrlPWMOutputs(TIM2,ENABLE);	//MOE ä¸»è¾“å‡ºä½¿èƒ½	
 
-	TIM_OC1PreloadConfig(TIM2, TIM_OCPreload_Enable);  //CH1Ô¤×°ÔØÊ¹ÄÜ	 
+	TIM_OC1PreloadConfig(TIM2, TIM_OCPreload_Enable);  //CH1é¢„è£…è½½ä½¿èƒ½	 
 	
-	TIM_ARRPreloadConfig(TIM2, ENABLE); //Ê¹ÄÜTIMxÔÚARRÉÏµÄÔ¤×°ÔØ¼Ä´æÆ÷
+	TIM_ARRPreloadConfig(TIM2, ENABLE); //ä½¿èƒ½TIMxåœ¨ARRä¸Šçš„é¢„è£…è½½å¯„å­˜å™¨
 	
 	
 	
-	TIM_Cmd(TIM2, ENABLE); //Æô¶¯¶¨Ê±Æ÷
+	TIM_Cmd(TIM2, ENABLE); //å¯åŠ¨å®šæ—¶å™¨
 }
 
 

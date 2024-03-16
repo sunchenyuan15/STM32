@@ -16,8 +16,8 @@
 int main(void)
 {
 	
-	delay_init();	    	 //ÑÓÊ±º¯Êı³õÊ¼»¯	  
-	uart_init(9600);	 	 //´®¿Ú³õÊ¼»¯Îª9600
+	delay_init();	    	 //å»¶æ—¶å‡½æ•°åˆå§‹åŒ–	  
+	uart_init(9600);	 	 //ä¸²å£åˆå§‹åŒ–ä¸º9600
 	LCD_Init();
 	POINT_COLOR=RED;
 	
@@ -25,27 +25,27 @@ int main(void)
 	Serial_Init();
 	
 //	Serial_SendByte(0x41);
-//	Serial_SendByte('A');//·¢ËÍÒ»¸ö×Ö½Ú
+//	Serial_SendByte('A');//å‘é€ä¸€ä¸ªå­—èŠ‚
 //	
 //	uint8_t SendArray[]={0x42, 0x43, 0x44, 0x45};
 
-//	Serial_SendArray(SendArray, 4);//·¢ËÍÒ»¸öÊı×é
+//	Serial_SendArray(SendArray, 4);//å‘é€ä¸€ä¸ªæ•°ç»„
 //	
-//	Serial_SendString("abcdef");//·¢ËÍ×Ö·û´®
+//	Serial_SendString("abcdef");//å‘é€å­—ç¬¦ä¸²
 //	
-//	Serial_Sendnumber(12345, 5);//·¢ËÍ×Ö·ûĞÎÊ½Êı×Ö
+//	Serial_Sendnumber(12345, 5);//å‘é€å­—ç¬¦å½¢å¼æ•°å­—
 //	
 //	printf("Num=%d\r\n", 666);
 	
 	
-	//sprintfÖ¸¶¨´òÓ¡Î»ÖÃ ²»Éæ¼°ÖØ¶¨Ïò
+	//sprintfæŒ‡å®šæ‰“å°ä½ç½® ä¸æ¶‰åŠé‡å®šå‘
 //	char String[100];
-//	sprintf(String, "Num=%d\r\n", 666);//½«¸ñÊ½»¯µÄÊı¾İĞ´Èë×Ö·û´®ÖĞ
+//	sprintf(String, "Num=%d\r\n", 666);//å°†æ ¼å¼åŒ–çš„æ•°æ®å†™å…¥å­—ç¬¦ä¸²ä¸­
 //	Serial_SendString(String);
 
-    //·â×°sprintf
+    //å°è£…sprintf
 	Serial_Printf("Num=%d\r\n", 666);
-	Serial_Printf("ÄãºÃ");
+	Serial_Printf("ä½ å¥½");
 	
 	
 	while(1)

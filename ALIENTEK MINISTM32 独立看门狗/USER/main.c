@@ -21,8 +21,8 @@
 int main(void)
 {
 	
-	delay_init();	    	 //ÑÓÊ±º¯Êı³õÊ¼»¯	  
-	uart_init(9600);	 	 //´®¿Ú³õÊ¼»¯Îª9600
+	delay_init();	    	 //å»¶æ—¶å‡½æ•°åˆå§‹åŒ–	  
+	uart_init(9600);	 	 //ä¸²å£åˆå§‹åŒ–ä¸º9600
 	LCD_Init();
 	POINT_COLOR=RED;
 		
@@ -38,7 +38,7 @@ int main(void)
 		LCD_ShowString(30,70,200,24,24,"       ");
 		delay_ms(500);
 		
-		RCC_ClearFlag();//Çå³ı±êÖ¾Î»
+		RCC_ClearFlag();//æ¸…é™¤æ ‡å¿—ä½
 	}
 	else
 	{
@@ -49,20 +49,20 @@ int main(void)
 	}
 	
 	
-	//¿ªÆôLSIÊ±ÖÓ
-	//×Ô¶¯¿ªÆô
+	//å¼€å¯LSIæ—¶é’Ÿ
+	//è‡ªåŠ¨å¼€å¯
 	
-	//½â³ıĞ´±£»¤
-	IWDG_WriteAccessCmd(IWDG_WriteAccess_Enable);//Ğ´Ê¹ÄÜ
+	//è§£é™¤å†™ä¿æŠ¤
+	IWDG_WriteAccessCmd(IWDG_WriteAccess_Enable);//å†™ä½¿èƒ½
 	
-	//Ğ´ÈëÔ¤·ÖÆµºÍÖØ×°Öµ
+	//å†™å…¥é¢„åˆ†é¢‘å’Œé‡è£…å€¼
 	IWDG_SetPrescaler(IWDG_Prescaler_16);
 	IWDG_SetReload(2499); //1000ms
 	
-	//Î¹¹·
+	//å–‚ç‹—
 	IWDG_ReloadCounter();
 	
-	//Æô¶¯¶ÀÁ¢¿´ÃÅ¹·
+	//å¯åŠ¨ç‹¬ç«‹çœ‹é—¨ç‹—
 	IWDG_Enable();
 
 	while(1)
@@ -73,7 +73,7 @@ int main(void)
 
 		Key_GetNum();
 		
-		//Î¹¹·
+		//å–‚ç‹—
 		IWDG_ReloadCounter();
 			
 		LCD_ShowString(30,130,200,24,24,"FEED");

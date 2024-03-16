@@ -27,17 +27,17 @@ void MySPI_Init(void)
 	
 	GPIO_InitTypeDef GPIO_InitStructure;
 	
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;//推挽输出
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;//鎺ㄦ尳杈撳嚭
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
 	
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;//复用推挽输出
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;//澶嶇敤鎺ㄦ尳杈撳嚭
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_5|GPIO_Pin_7;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
 	
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;//上拉输入
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;//涓婃媺杈撳叆
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
@@ -45,14 +45,14 @@ void MySPI_Init(void)
 	
 	SPI_InitTypeDef SPI_InitStructure;
 	SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_128;
-	SPI_InitStructure.SPI_CPHA = SPI_CPHA_1Edge;//模式0
-	SPI_InitStructure.SPI_CPOL = SPI_CPOL_Low;//模式0
+	SPI_InitStructure.SPI_CPHA = SPI_CPHA_1Edge;//妯″紡0
+	SPI_InitStructure.SPI_CPOL = SPI_CPOL_Low;//妯″紡0
 	SPI_InitStructure.SPI_CRCPolynomial = 7;
 	SPI_InitStructure.SPI_DataSize = SPI_DataSize_8b;
 	SPI_InitStructure.SPI_Direction = SPI_Direction_2Lines_FullDuplex;
-	SPI_InitStructure.SPI_FirstBit = SPI_FirstBit_MSB;//高位先行
+	SPI_InitStructure.SPI_FirstBit = SPI_FirstBit_MSB;//楂樹綅鍏堣
 	SPI_InitStructure.SPI_Mode = SPI_Mode_Master;
-	SPI_InitStructure.SPI_NSS = SPI_NSS_Soft;//使用GPIO模拟
+	SPI_InitStructure.SPI_NSS = SPI_NSS_Soft;//浣跨敤GPIO妯℃嫙
 	
 	SPI_Init(SPI1, &SPI_InitStructure);
 	
@@ -75,10 +75,10 @@ void MySPI_Stop(void)
 
 uint8_t MySPI_SwapByte(uint8_t ByteSend)
 {
-	while(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE) != SET);//等待TXE==1
+	while(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE) != SET);//绛夊緟TXE==1
 	SPI_I2S_SendData(SPI1, ByteSend);
 	
-	while(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_RXNE) != SET);//等待RXNE==1
+	while(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_RXNE) != SET);//绛夊緟RXNE==1
 	return SPI_I2S_ReceiveData(SPI1);
 }
 

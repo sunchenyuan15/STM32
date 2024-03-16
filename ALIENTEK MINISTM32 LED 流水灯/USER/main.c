@@ -1,33 +1,32 @@
 #include "stm32f10x.h"
- void Delay(u32 count)
- {
+void Delay(u32 count)
+{
   u32 i=0;
   for(;i<count;i++);
-
- }
- int main(void)
- {	
+}
+int main(void)
+{
   GPIO_InitTypeDef  GPIO_InitStructure;
  	
-  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_APB2Periph_GPIOD, ENABLE);	 //Ê¹ÄÜPA,PD¶Ë¿ÚÊ±ÖÓ
+  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_APB2Periph_GPIOD, ENABLE);	 //ä½¿èƒ½PA,PDç«¯å£æ—¶é’Ÿ
 	
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8|GPIO_Pin_2;	 //LED0-->PA.8 ¶Ë¿ÚÅäÖÃ LED1-->PD.2 ¶Ë¿ÚÅäÖÃ
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; 		 //ÍÆÍìÊä³ö
-  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;		 //IO¿ÚËÙ¶ÈÎª50MHz
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8|GPIO_Pin_2;	  //LED0-->PA.8 ç«¯å£é…ç½® LED1-->PD.2 ç«¯å£é…ç½®
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; 		    //æ¨æŒ½è¾“å‡º
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;		    //IOå£é€Ÿåº¦ä¸º50MHz
 	 
-  GPIO_Init(GPIOA, &GPIO_InitStructure);					 //¸ù¾İÉè¶¨²ÎÊı³õÊ¼»¯GPIOA.8
-  GPIO_SetBits(GPIOA,GPIO_Pin_8);						 //PA.8 Êä³ö¸ß
+  GPIO_Init(GPIOA, &GPIO_InitStructure);					        //æ ¹æ®è®¾å®šå‚æ•°åˆå§‹åŒ–GPIOA.8
+  GPIO_SetBits(GPIOA,GPIO_Pin_8);						              //PA.8 è¾“å‡ºé«˜
 
-  GPIO_Init(GPIOD, &GPIO_InitStructure);	  				 //¸ù¾İÉè¶¨²ÎÊı³õÊ¼»¯GPIOD.2
-  GPIO_SetBits(GPIOD,GPIO_Pin_2); 						 //PD.2 Êä³ö¸ß 	  
+  GPIO_Init(GPIOD, &GPIO_InitStructure);	  				      //æ ¹æ®è®¾å®šå‚æ•°åˆå§‹åŒ–GPIOD.2
+  GPIO_SetBits(GPIOD,GPIO_Pin_2); 						            //PD.2 è¾“å‡ºé«˜ 	  
   while(1)
-	{
-	    GPIO_ResetBits(GPIOA,GPIO_Pin_8);
-	    GPIO_SetBits(GPIOD,GPIO_Pin_2);
+  {
+    GPIO_ResetBits(GPIOA,GPIO_Pin_8);
+	  GPIO_SetBits(GPIOD,GPIO_Pin_2);
 		Delay(3000000);
 		GPIO_SetBits(GPIOA,GPIO_Pin_8);
 		GPIO_ResetBits(GPIOD,GPIO_Pin_2);
 		Delay(3000000);
-	}
- }
+    }
+}
 

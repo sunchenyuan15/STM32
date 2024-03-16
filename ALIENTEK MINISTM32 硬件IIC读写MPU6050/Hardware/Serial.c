@@ -1,9 +1,9 @@
 #include "stm32f10x.h"                  // Device header
 #include <stdio.h>
-#include <stdarg.h>//ÓÃÓÚ·ÃÎÊº¯Êı²ÎÊıÁĞ±íÖĞµÄ¿É±ä²ÎÊı
+#include <stdarg.h>//ç”¨äºè®¿é—®å‡½æ•°å‚æ•°åˆ—è¡¨ä¸­çš„å¯å˜å‚æ•°
 
 
-int8_t Serial_RxPacket[100];//½ÓÊÜÔØºÉÊı¾İ
+int8_t Serial_RxPacket[100];//æ¥å—è½½è·æ•°æ®
 uint8_t Serial_Rxflag;
 
 void Serial_Init(void)
@@ -11,36 +11,36 @@ void Serial_Init(void)
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
 	
-	//Ä¿Ç°Ö»Éè¶¨ ·¢ËÍÄ£Ê½
+	//ç›®å‰åªè®¾å®š å‘é€æ¨¡å¼
 	
-	//³õÊ¼»¯GPIO
+	//åˆå§‹åŒ–GPIO
 	GPIO_InitTypeDef GPIO_InitStruct;
-	GPIO_InitStruct.GPIO_Mode = GPIO_Mode_AF_PP;//TX¸´ÓÃÍÆÍìÊä³ö RXÊäÈëÄ£Ê½ 
+	GPIO_InitStruct.GPIO_Mode = GPIO_Mode_AF_PP;//TXå¤ç”¨æ¨æŒ½è¾“å‡º RXè¾“å…¥æ¨¡å¼ 
 	GPIO_InitStruct.GPIO_Pin = GPIO_Pin_9;
 	GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
 	
 	GPIO_Init(GPIOA, &GPIO_InitStruct);
 	
-	GPIO_InitStruct.GPIO_Mode = GPIO_Mode_IPU;//TX¸´ÓÃÍÆÍìÊä³ö RXÊäÈëÄ£Ê½ 
+	GPIO_InitStruct.GPIO_Mode = GPIO_Mode_IPU;//TXå¤ç”¨æ¨æŒ½è¾“å‡º RXè¾“å…¥æ¨¡å¼ 
 	GPIO_InitStruct.GPIO_Pin = GPIO_Pin_10;
 	GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
 	
 	GPIO_Init(GPIOA, &GPIO_InitStruct);
 	
 	
-	//³õÊ¼»¯USART
+	//åˆå§‹åŒ–USART
 	USART_InitTypeDef USART_InitStructure;
 	USART_InitStructure.USART_BaudRate = 9600;
-	USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;//Ó²¼şÁ÷¿ØÖÆ
+	USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;//ç¡¬ä»¶æµæ§åˆ¶
 	USART_InitStructure.USART_Mode = USART_Mode_Tx|USART_Mode_Rx;
-	USART_InitStructure.USART_Parity = USART_Parity_No;//Ğ£ÑéÎ»
-	USART_InitStructure.USART_StopBits = USART_StopBits_1;//Í£Ö¹Î»
-	USART_InitStructure.USART_WordLength = USART_WordLength_8b;//×Ö³¤
+	USART_InitStructure.USART_Parity = USART_Parity_No;//æ ¡éªŒä½
+	USART_InitStructure.USART_StopBits = USART_StopBits_1;//åœæ­¢ä½
+	USART_InitStructure.USART_WordLength = USART_WordLength_8b;//å­—é•¿
 	
 	USART_Init(USART1, &USART_InitStructure);
 	
-	//´®¿Ú½ÓÊÜ ÖĞ¶Ï·½·¨
-	USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);//¿ªÆôRXNE±êÖ¾Î»µ½NVICµÄÊä³ö
+	//ä¸²å£æ¥å— ä¸­æ–­æ–¹æ³•
+	USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);//å¼€å¯RXNEæ ‡å¿—ä½åˆ°NVICçš„è¾“å‡º
 	
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 	NVIC_InitTypeDef NVIC_InitStructure;
@@ -53,14 +53,14 @@ void Serial_Init(void)
 }
 
 
-//·¢ËÍÒ»¸ö×Ö½Ú
+//å‘é€ä¸€ä¸ªå­—èŠ‚
 void Serial_SendByte(uint8_t Byte)
 {
-	USART_SendData(USART1, Byte);//Ğ´ÈëTDR
-	while( USART_GetFlagStatus(USART1, USART_FLAG_TXE) == RESET );//·¢ËÍÊı¾İ¼Ä´æÆ÷¿Õ±êÖ¾Î», ÎªSET½áÊøµÈ´ı	
+	USART_SendData(USART1, Byte);//å†™å…¥TDR
+	while( USART_GetFlagStatus(USART1, USART_FLAG_TXE) == RESET );//å‘é€æ•°æ®å¯„å­˜å™¨ç©ºæ ‡å¿—ä½, ä¸ºSETç»“æŸç­‰å¾…	
 }
 
-//Ê¹ÓÃÖ¸Õë´«µİÊı×é£¨³¤¶È²ÎÊı£©
+//ä½¿ç”¨æŒ‡é’ˆä¼ é€’æ•°ç»„ï¼ˆé•¿åº¦å‚æ•°ï¼‰
 void Serial_SendArray(uint8_t *Array, uint16_t length)
 {
 	uint16_t i;
@@ -71,7 +71,7 @@ void Serial_SendArray(uint8_t *Array, uint16_t length)
 	}
 }
 
-//Í¨¹ıÖ¸Õë´«µİ×Ö·û´®
+//é€šè¿‡æŒ‡é’ˆä¼ é€’å­—ç¬¦ä¸²
 void Serial_SendString(char *String)
 {
 	uint8_t i;  
@@ -87,7 +87,7 @@ void Serial_SendString(char *String)
 //	}
 }
 
-//ÇóxµÄy´Î·½ÊıÖµº¯Êı
+//æ±‚xçš„yæ¬¡æ–¹æ•°å€¼å‡½æ•°
 uint32_t Serial_Pow(uint32_t x, uint32_t y)
 {
 	uint32_t result = 1;
@@ -99,17 +99,17 @@ uint32_t Serial_Pow(uint32_t x, uint32_t y)
 	
 }
 
-//·¢ËÍ×Ö·ûĞÎÊ½Êı×Ö
+//å‘é€å­—ç¬¦å½¢å¼æ•°å­—
 void Serial_Sendnumber(uint32_t number, uint8_t length)
 {
 	uint8_t i;
 	for (i=0; i<length; i++){
-		Serial_SendByte(number/Serial_Pow(10, length-i-1)%10 + '0');//½«Êı×Ö²ğ·Ö³ÉÃ¿Ò»Î»£¬Ã¿Ò»Î»×ª»»Îª ASCII ×Ö·û		
+		Serial_SendByte(number/Serial_Pow(10, length-i-1)%10 + '0');//å°†æ•°å­—æ‹†åˆ†æˆæ¯ä¸€ä½ï¼Œæ¯ä¸€ä½è½¬æ¢ä¸º ASCII å­—ç¬¦		
 	}	
 }
  
-//printfº¯ÊıÒÆÖ²·½·¨
-//fputcÖØ¶¨Ïòµ½´®¿Ú£¨·Ç¿ØÖÆÌ¨£©
+//printfå‡½æ•°ç§»æ¤æ–¹æ³•
+//fputcé‡å®šå‘åˆ°ä¸²å£ï¼ˆéæ§åˆ¶å°ï¼‰
 int Serial_fputc(int ch, FILE *f)
 {
 	Serial_SendByte(ch);
@@ -117,7 +117,7 @@ int Serial_fputc(int ch, FILE *f)
 }
 
 
-//·â×°sprintfº¯Êı
+//å°è£…sprintfå‡½æ•°
 void Serial_Printf(char *format, ...)
 {
 	char String[100];
@@ -129,7 +129,7 @@ void Serial_Printf(char *format, ...)
 	
 }
 
-//uint8_t Serial_GetRxflag(void)//ÊÇ·ñ½ÓÊÜµ½Êı¾İ°ü£¬½ÓÊÕµ½Ö®ºóÁ¢¿ÌÇå³ı±êÖ¾Î»
+//uint8_t Serial_GetRxflag(void)//æ˜¯å¦æ¥å—åˆ°æ•°æ®åŒ…ï¼Œæ¥æ”¶åˆ°ä¹‹åç«‹åˆ»æ¸…é™¤æ ‡å¿—ä½
 //{
 //	if(Serial_Rxflag == 1)
 //	{
@@ -141,9 +141,9 @@ void Serial_Printf(char *format, ...)
 
 
 
-void Serial_USART1_IRQHandler(void)//ÖĞ¶Ï
+void Serial_USART1_IRQHandler(void)//ä¸­æ–­
 {
-	static uint8_t RxState = 0;//×´Ì¬±êÖ¾Î»
+	static uint8_t RxState = 0;//çŠ¶æ€æ ‡å¿—ä½
 	static uint8_t pRxPacket = 0;
 	
 	
@@ -151,16 +151,16 @@ void Serial_USART1_IRQHandler(void)//ÖĞ¶Ï
 	{
 		int8_t RxData = USART_ReceiveData(USART1);
 		
-		if(RxState == 0)//×´Ì¬0
+		if(RxState == 0)//çŠ¶æ€0
 		{
-			if(RxData == '@' && Serial_Rxflag==0)//´¦ÀíÍê³ÉÔÙ½ÓÊÜÏÂÒ»¸öÊı¾İ°ü
+			if(RxData == '@' && Serial_Rxflag==0)//å¤„ç†å®Œæˆå†æ¥å—ä¸‹ä¸€ä¸ªæ•°æ®åŒ…
 			{
 				RxState=1;
 				pRxPacket=0;
 			}	
 		}
 		
-		else if(RxState == 1)//×´Ì¬1
+		else if(RxState == 1)//çŠ¶æ€1
 		{
 			if(RxData=='\r')
 			{
@@ -173,17 +173,17 @@ void Serial_USART1_IRQHandler(void)//ÖĞ¶Ï
 			}
 		}
 		
-		else if(RxState == 2)//×´Ì¬2
+		else if(RxState == 2)//çŠ¶æ€2
 		{
 			if(RxData == '\n')
 				{
 					RxState=0;
 					Serial_RxPacket[pRxPacket]='\0';
-					Serial_Rxflag=1;//½ÓÊÕµ½Ò»¸öÊı¾İ°ü				
+					Serial_Rxflag=1;//æ¥æ”¶åˆ°ä¸€ä¸ªæ•°æ®åŒ…				
 				}		
 		}
 		
-		USART_ClearITPendingBit(USART1, USART_IT_RXNE);//Çå³ıÖĞ¶Ï±êÖ¾Î»	
+		USART_ClearITPendingBit(USART1, USART_IT_RXNE);//æ¸…é™¤ä¸­æ–­æ ‡å¿—ä½	
 	}
 }
 

@@ -15,8 +15,8 @@ uint16_t num; //(unsigned short)
 int main(void)
 {
 	
-	delay_init();	    	 //ÑÓÊ±º¯Êı³õÊ¼»¯	  
-	uart_init(9600);	 	 //´®¿Ú³õÊ¼»¯Îª9600
+	delay_init();	    	 //å»¶æ—¶å‡½æ•°åˆå§‹åŒ–	  
+	uart_init(9600);	 	 //ä¸²å£åˆå§‹åŒ–ä¸º9600
 	LCD_Init();
 //	Encoder_Init();
 	Timer_Init();
@@ -31,21 +31,21 @@ int main(void)
 	while(1)
 	{
 		
-		LCD_ShowxNum(100,70,num,5,24,0); //ÏÔÊ¾Êı×Ö
-		LCD_ShowxNum(30,100,TIM_GetCounter(TIM2),5,24,0); //ÏÔÊ¾Êı×Ö
-//		LCD_ShowxNum(100,70,CountSensor_Get(),5,24,0); //ÏÔÊ¾Êı×Ö
+		LCD_ShowxNum(100,70,num,5,24,0); //æ˜¾ç¤ºæ•°å­—
+		LCD_ShowxNum(30,100,TIM_GetCounter(TIM2),5,24,0); //æ˜¾ç¤ºæ•°å­—
+//		LCD_ShowxNum(100,70,CountSensor_Get(),5,24,0); //æ˜¾ç¤ºæ•°å­—
 //		num += Encoder_Get();
-//		LCD_ShowxNum(100,70,num,5,24,0); //ÏÔÊ¾Êı×Ö
+//		LCD_ShowxNum(100,70,num,5,24,0); //æ˜¾ç¤ºæ•°å­—
 		
 	}
 }
 
 void TIM2_IRQHandler(void)
 {
-	if (TIM_GetITStatus(TIM2, TIM_IT_Update) == SET) //¸üĞÂÖĞ¶Ï
+	if (TIM_GetITStatus(TIM2, TIM_IT_Update) == SET) //æ›´æ–°ä¸­æ–­
 	{
 		num++;
-		TIM_ClearITPendingBit(TIM2, TIM_IT_Update); //Çå³ı±êÖ¾Î»
+		TIM_ClearITPendingBit(TIM2, TIM_IT_Update); //æ¸…é™¤æ ‡å¿—ä½
 			
 	}
 	

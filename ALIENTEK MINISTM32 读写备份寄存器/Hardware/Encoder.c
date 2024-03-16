@@ -7,7 +7,7 @@ void Encoder_Init(void)
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
 	
 	
-	//GPIOÅäÖÃ
+	//GPIOé…ç½®
 	GPIO_InitTypeDef GPIO_InitStructure;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6 | GPIO_Pin_7;
@@ -16,7 +16,7 @@ void Encoder_Init(void)
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
 
 	
-	//Ê±»ùµ¥ÔªÅäÖÃ	
+	//æ—¶åŸºå•å…ƒé…ç½®	
 	TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure;
 	TIM_TimeBaseInitStructure.TIM_ClockDivision = TIM_CKD_DIV1;
 	TIM_TimeBaseInitStructure.TIM_CounterMode = TIM_CounterMode_Up;
@@ -27,7 +27,7 @@ void Encoder_Init(void)
 	TIM_TimeBaseInit(TIM3, &TIM_TimeBaseInitStructure);
 	
 	
-	//ÊäÈë²¶»ñµ¥ÔªÅäÖÃ
+	//è¾“å…¥æ•è·å•å…ƒé…ç½®
 	TIM_ICInitTypeDef TIM_ICInitStructure;
 	TIM_ICInitStructure.TIM_Channel = TIM_Channel_1;
 	TIM_ICInitStructure.TIM_ICFilter = 0xF;
@@ -46,7 +46,7 @@ void Encoder_Init(void)
 	TIM_ICInit(TIM3, &TIM_ICInitStructure);
 	
 	
-	//ÅäÖÃ±àÂëÆ÷½Ó¿Ú
+	//é…ç½®ç¼–ç å™¨æ¥å£
 	TIM_EncoderInterfaceConfig(TIM3, TIM_EncoderMode_TI12, TIM_ICPolarity_Rising, TIM_ICPolarity_Rising);
 	
 	TIM_Cmd(TIM3, ENABLE);

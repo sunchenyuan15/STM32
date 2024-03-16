@@ -1,5 +1,5 @@
-//´æ·ÅÕâ¸öÇý¶¯³ÌÐò¿ÉÒÔ¶ÔÍâÌá¹©µÄº¯Êý»òÕß±äÁ¿µÄÉùÃ÷
-#ifndef __LED_H//·ÀÖ¹Í·ÎÄ¼þÖØ¸´°üº¬
+//å­˜æ”¾è¿™ä¸ªé©±åŠ¨ç¨‹åºå¯ä»¥å¯¹å¤–æä¾›çš„å‡½æ•°æˆ–è€…å˜é‡çš„å£°æ˜Ž
+#ifndef __LED_H//é˜²æ­¢å¤´æ–‡ä»¶é‡å¤åŒ…å«
 #define __LED_H
 
 void LED_Init(void);

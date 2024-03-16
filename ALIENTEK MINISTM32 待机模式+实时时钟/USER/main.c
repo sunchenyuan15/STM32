@@ -21,8 +21,8 @@
 int main(void)
 {
 	
-	delay_init();	    	 //ÑÓÊ±º¯Êı³õÊ¼»¯	  
-	uart_init(9600);	 	 //´®¿Ú³õÊ¼»¯Îª9600
+	delay_init();	    	 //å»¶æ—¶å‡½æ•°åˆå§‹åŒ–	  
+	uart_init(9600);	 	 //ä¸²å£åˆå§‹åŒ–ä¸º9600
 	LCD_Init();
 	POINT_COLOR=RED;
 	
@@ -35,14 +35,14 @@ int main(void)
 	LCD_ShowString(30,160,200,24,24,"ALRF");
 	
 	
-	//WKUPÒı½ÅÉÏÉıÑØ»½ĞÑ´ı»úÄ£Ê½
+	//WKUPå¼•è„šä¸Šå‡æ²¿å”¤é†’å¾…æœºæ¨¡å¼
 	PWR_WakeUpPinCmd(ENABLE);
 	
 	
 	uint32_t alarm = RTC_GetCounter() + 10;
 	
-	//RTCÄÖÖÓÊÂ¼ş»½ĞÑ´ı»úÄ£Ê½
-	RTC_SetAlarm(alarm);//µ±Ç°ÃëÊı + 10
+	//RTCé—¹é’Ÿäº‹ä»¶å”¤é†’å¾…æœºæ¨¡å¼
+	RTC_SetAlarm(alarm);//å½“å‰ç§’æ•° + 10
 	
 	LCD_ShowxNum(30,130,alarm,10,24,0);
 	
@@ -62,10 +62,10 @@ int main(void)
 		LCD_ShowString(30,220,200,24,24,"       ");
 		delay_ms(500);
 		
-		//½øÈë´ı»úÄ£Ê½
+		//è¿›å…¥å¾…æœºæ¨¡å¼
 		PWR_EnterSTANDBYMode();
 		
-		//Ö®ºóµÄ´úÂëÎŞ·¨Ö´ĞĞ
+		//ä¹‹åçš„ä»£ç æ— æ³•æ‰§è¡Œ
 	
 	}
 }

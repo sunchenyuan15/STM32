@@ -4,20 +4,20 @@
 #include "usart.h"
 #include "lcd.h"
 
-//ALIENTEK Mini STM32¿ª·¢°å·¶Àı´úÂë11
-//TFTLCDÏÔÊ¾ÊµÑé   
-//¼¼ÊõÖ§³Ö£ºwww.openedv.com
-//¹ãÖİÊĞĞÇÒíµç×Ó¿Æ¼¼ÓĞÏŞ¹«Ë¾ 
+//ALIENTEK Mini STM32å¼€å‘æ¿èŒƒä¾‹ä»£ç 11
+//TFTLCDæ˜¾ç¤ºå®éªŒ   
+//æŠ€æœ¯æ”¯æŒï¼šwww.openedv.com
+//å¹¿å·å¸‚æ˜Ÿç¿¼ç”µå­ç§‘æŠ€æœ‰é™å…¬å¸ 
  int main(void)
  { 
 	u8 x=0;
-	u8 lcd_id[12];			//´æ·ÅLCD ID×Ö·û´®	
-	delay_init();	    	 //ÑÓÊ±º¯Êı³õÊ¼»¯	  
-	uart_init(9600);	 	//´®¿Ú³õÊ¼»¯Îª9600
-	LED_Init();		  		//³õÊ¼»¯ÓëLEDÁ¬½ÓµÄÓ²¼ş½Ó¿Ú
+	u8 lcd_id[12];			//å­˜æ”¾LCD IDå­—ç¬¦ä¸²	
+	delay_init();	    	 //å»¶æ—¶å‡½æ•°åˆå§‹åŒ–	  
+	uart_init(9600);	 	//ä¸²å£åˆå§‹åŒ–ä¸º9600
+	LED_Init();		  		//åˆå§‹åŒ–ä¸LEDè¿æ¥çš„ç¡¬ä»¶æ¥å£
  	LCD_Init();
 	POINT_COLOR=RED; 
-	sprintf((char*)lcd_id,"LCD ID:%04X",lcddev.id);//½«LCD ID´òÓ¡µ½lcd_idÊı×é¡£				 	
+	sprintf((char*)lcd_id,"LCD ID:%04X",lcddev.id);//å°†LCD IDæ‰“å°åˆ°lcd_idæ•°ç»„ã€‚				 	
   	while(1) 
 	{		 
 		switch(x)
@@ -40,7 +40,7 @@
 		LCD_ShowString(30,40,200,24,24,"Mini STM32 ^_^");	
 		LCD_ShowString(30,70,200,16,16,"TFTLCD TEST");
 		LCD_ShowString(30,90,200,16,16,"ATOM@ALIENTEK");
- 		LCD_ShowString(30,110,200,16,16,lcd_id);		//ÏÔÊ¾LCD ID	      					 
+ 		LCD_ShowString(30,110,200,16,16,lcd_id);		//æ˜¾ç¤ºLCD ID	      					 
 		LCD_ShowString(30,130,200,12,12,"2014/3/7");	      					 
 	    x++;
 		if(x==12)x=0;

@@ -15,8 +15,8 @@
 int main(void)
 {
 	
-	delay_init();	    	 //ÑÓÊ±º¯Êı³õÊ¼»¯	  
-	uart_init(9600);	 	 //´®¿Ú³õÊ¼»¯Îª9600
+	delay_init();	    	 //å»¶æ—¶å‡½æ•°åˆå§‹åŒ–	  
+	uart_init(9600);	 	 //ä¸²å£åˆå§‹åŒ–ä¸º9600
 	LCD_Init();
 	
 	AD_Init();
@@ -33,10 +33,10 @@ int main(void)
 		
 
 			
-		LCD_ShowxNum(100,40,AD_Value[0],4,24,0); //ÏÔÊ¾adcÊıÖµ
-		LCD_ShowxNum(100,70,AD_Value[1],4,24,0); //ÏÔÊ¾adcÊıÖµ
-		LCD_ShowxNum(100,100,AD_Value[2],4,24,0); //ÏÔÊ¾adcÊıÖµ
-		LCD_ShowxNum(100,130,AD_Value[3],4,24,0); //ÏÔÊ¾adcÊıÖµ
+		LCD_ShowxNum(100,40,AD_Value[0],4,24,0); //æ˜¾ç¤ºadcæ•°å€¼
+		LCD_ShowxNum(100,70,AD_Value[1],4,24,0); //æ˜¾ç¤ºadcæ•°å€¼
+		LCD_ShowxNum(100,100,AD_Value[2],4,24,0); //æ˜¾ç¤ºadcæ•°å€¼
+		LCD_ShowxNum(100,130,AD_Value[3],4,24,0); //æ˜¾ç¤ºadcæ•°å€¼
 		
 		delay_ms(100);
 	}

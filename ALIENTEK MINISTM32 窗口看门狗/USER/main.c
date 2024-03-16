@@ -21,8 +21,8 @@
 int main(void)
 {
 	
-	delay_init();	    	 //ÑÓÊ±º¯Êı³õÊ¼»¯	  
-	uart_init(9600);	 	 //´®¿Ú³õÊ¼»¯Îª9600
+	delay_init();	    	 //å»¶æ—¶å‡½æ•°åˆå§‹åŒ–	  
+	uart_init(9600);	 	 //ä¸²å£åˆå§‹åŒ–ä¸º9600
 	LCD_Init();
 	POINT_COLOR=RED;
 		
@@ -38,7 +38,7 @@ int main(void)
 		LCD_ShowString(30,70,200,24,24,"       ");
 		delay_ms(500);
 		
-		RCC_ClearFlag();//Çå³ı±êÖ¾Î»
+		RCC_ClearFlag();//æ¸…é™¤æ ‡å¿—ä½
 	}
 	else
 	{
@@ -49,19 +49,19 @@ int main(void)
 	}
 	
 	
-	//¿ªÆôÊ±ÖÓ
+	//å¼€å¯æ—¶é’Ÿ
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_WWDG, ENABLE);
 	
-	//Ğ´ÈëÔ¤·ÖÆµºÍ´°¿ÚÖµ
+	//å†™å…¥é¢„åˆ†é¢‘å’Œçª—å£å€¼
 	WWDG_SetPrescaler(WWDG_Prescaler_8);
-	WWDG_SetWindowValue(0x40 | 21);//´°¿ÚÊ±¼ä30ms
+	WWDG_SetWindowValue(0x40 | 21);//çª—å£æ—¶é—´30ms
 	
-	//Ğ´Èë¿ØÖÆ¼Ä´æÆ÷
+	//å†™å…¥æ§åˆ¶å¯„å­˜å™¨
 	IWDG_ReloadCounter();
 	
-	//Ê¹ÄÜ´°¿Ú¿´ÃÅ¹·
-	WWDG_Enable(0x40 | 54);//T6Î»ÉèÎª1 
-	//³¬Ê±Ê±¼ä50ms
+	//ä½¿èƒ½çª—å£çœ‹é—¨ç‹—
+	WWDG_Enable(0x40 | 54);//T6ä½è®¾ä¸º1 
+	//è¶…æ—¶æ—¶é—´50ms
 
 	while(1)
 	{
@@ -77,7 +77,7 @@ int main(void)
 //		LCD_ShowString(30,130,200,24,24,"    ");
 		delay_ms(30);
 		
-		//Î¹¹·
+		//å–‚ç‹—
 		WWDG_SetCounter(0x40 | 54);
 		
 	}

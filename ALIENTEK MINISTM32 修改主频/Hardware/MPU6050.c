@@ -4,32 +4,32 @@
 
 
 /*
-¶à²ãÄ£¿é¼Ü¹¹£º
+å¤šå±‚æ¨¡å—æ¶æ„ï¼š
 
-ÉÏ²ã£ºLCDÏÔÊ¾Êı¾İ
-ÖĞ²ã£ºMPU6050Çı¶¯²ã£ºÅäÖÃ¼°¶ÁĞ´¼Ä´æÆ÷
-µ×²ã£ºiicÍ¨ĞÅĞ­Òé£ºÒı½Å¼°ÅäÖÃ
+ä¸Šå±‚ï¼šLCDæ˜¾ç¤ºæ•°æ®
+ä¸­å±‚ï¼šMPU6050é©±åŠ¨å±‚ï¼šé…ç½®åŠè¯»å†™å¯„å­˜å™¨
+åº•å±‚ï¼šiicé€šä¿¡åè®®ï¼šå¼•è„šåŠé…ç½®
 
 */
 
 #define MPU6050_Address 0xD0
 
-void MPU6050_WriteReg(uint8_t RegAddress, uint8_t Data)//Ö¸¶¨µØÖ·Ğ´Ò»¸ö×Ö½Ú
+void MPU6050_WriteReg(uint8_t RegAddress, uint8_t Data)//æŒ‡å®šåœ°å€å†™ä¸€ä¸ªå­—èŠ‚
 {
 //	MyIIC_Start();
-//	MyIIC_SendByte(MPU6050_Address);//Ö¸¶¨´Ó»úµØÖ·
-//	MyI2C_ReceiveAck();//Ó¦´ğ
-//	MyIIC_SendByte(RegAddress);//Ö¸¶¨¼Ä´æÆ÷µØÖ·Ğ´Êı¾İ
+//	MyIIC_SendByte(MPU6050_Address);//æŒ‡å®šä»æœºåœ°å€
+//	MyI2C_ReceiveAck();//åº”ç­”
+//	MyIIC_SendByte(RegAddress);//æŒ‡å®šå¯„å­˜å™¨åœ°å€å†™æ•°æ®
 //	MyI2C_ReceiveAck();
-//	MyIIC_SendByte(Data);//Ğ´Êı¾İ
+//	MyIIC_SendByte(Data);//å†™æ•°æ®
 //	MyI2C_ReceiveAck();
 //	MyIIC_Stop();
 	
 	I2C_GenerateSTART(I2C2, ENABLE);
 	
-	while(I2C_CheckEvent(I2C2, I2C_EVENT_MASTER_MODE_SELECT) == ERROR);//·Ç×èÈûÊ½³ÌĞòÒªÅĞ¶Ï±êÖ¾Î»
+	while(I2C_CheckEvent(I2C2, I2C_EVENT_MASTER_MODE_SELECT) == ERROR);//éé˜»å¡å¼ç¨‹åºè¦åˆ¤æ–­æ ‡å¿—ä½
 	
-	I2C_Send7bitAddress(I2C2, MPU6050_Address, I2C_Direction_Transmitter);//·¢ËÍ´Ó»úµØÖ·£¨×Ô´ø½ÓÊÜÓ¦´ğ£©
+	I2C_Send7bitAddress(I2C2, MPU6050_Address, I2C_Direction_Transmitter);//å‘é€ä»æœºåœ°å€ï¼ˆè‡ªå¸¦æ¥å—åº”ç­”ï¼‰
 	
 	while(I2C_CheckEvent(I2C2, I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED) == ERROR);
 	
@@ -44,28 +44,28 @@ void MPU6050_WriteReg(uint8_t RegAddress, uint8_t Data)//Ö¸¶¨µØÖ·Ğ´Ò»¸ö×Ö½Ú
 	I2C_GenerateSTOP(I2C2, ENABLE);
 }
 
-uint8_t MPU6050_ReadReg(uint8_t RegAddress)//Ö¸¶¨µØÖ·¶ÁÒ»¸ö×Ö½Ú
+uint8_t MPU6050_ReadReg(uint8_t RegAddress)//æŒ‡å®šåœ°å€è¯»ä¸€ä¸ªå­—èŠ‚
 {
 	uint8_t Data;
 //	MyIIC_Start();
-//	MyIIC_SendByte(MPU6050_Address);//Ö¸¶¨´Ó»úµØÖ·
+//	MyIIC_SendByte(MPU6050_Address);//æŒ‡å®šä»æœºåœ°å€
 //	MyI2C_ReceiveAck();
-//	MyIIC_SendByte(RedAddress);//Ö¸¶¨¼Ä´æÆ÷µØÖ·
+//	MyIIC_SendByte(RedAddress);//æŒ‡å®šå¯„å­˜å™¨åœ°å€
 //	MyI2C_ReceiveAck();
 //	
-//	MyIIC_Start();//ÖØ¸´ÆğÊ¼
-//	MyIIC_SendByte(MPU6050_Address | 0x01);//Ö¸¶¨´Ó»úµØÖ·¶ÁÊı¾İ
+//	MyIIC_Start();//é‡å¤èµ·å§‹
+//	MyIIC_SendByte(MPU6050_Address | 0x01);//æŒ‡å®šä»æœºåœ°å€è¯»æ•°æ®
 //	MyI2C_ReceiveAck();
 //	Data = MyI2C_ReceiveByte();
-//	MyIIC_SendAck(1);//Ö÷»ú¸ø´Ó»ú·¢·ÇÓ¦´ğ£¬´Ó»ú²»ÔÙ¼ÌĞø·¢Êı¾İ
+//	MyIIC_SendAck(1);//ä¸»æœºç»™ä»æœºå‘éåº”ç­”ï¼Œä»æœºä¸å†ç»§ç»­å‘æ•°æ®
 //	MyIIC_Stop();
 	
 	
 	I2C_GenerateSTART(I2C2, ENABLE);
 	
-	while(I2C_CheckEvent(I2C2, I2C_EVENT_MASTER_MODE_SELECT) == ERROR);//·Ç×èÈûÊ½³ÌĞòÒªÅĞ¶Ï±êÖ¾Î»
+	while(I2C_CheckEvent(I2C2, I2C_EVENT_MASTER_MODE_SELECT) == ERROR);//éé˜»å¡å¼ç¨‹åºè¦åˆ¤æ–­æ ‡å¿—ä½
 	
-	I2C_Send7bitAddress(I2C2, MPU6050_Address, I2C_Direction_Transmitter);//·¢ËÍ´Ó»úµØÖ·£¨×Ô´ø½ÓÊÜÓ¦´ğ£©
+	I2C_Send7bitAddress(I2C2, MPU6050_Address, I2C_Direction_Transmitter);//å‘é€ä»æœºåœ°å€ï¼ˆè‡ªå¸¦æ¥å—åº”ç­”ï¼‰
 	
 	while(I2C_CheckEvent(I2C2, I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED) == ERROR);
 	
@@ -73,23 +73,23 @@ uint8_t MPU6050_ReadReg(uint8_t RegAddress)//Ö¸¶¨µØÖ·¶ÁÒ»¸ö×Ö½Ú
 	
 	while(I2C_CheckEvent(I2C2, I2C_EVENT_MASTER_BYTE_TRANSMITTED) == ERROR);
 	
-	I2C_GenerateSTART(I2C2, ENABLE);//ÖØ¸´ÆğÊ¼ 
+	I2C_GenerateSTART(I2C2, ENABLE);//é‡å¤èµ·å§‹ 
 	
-	while(I2C_CheckEvent(I2C2, I2C_EVENT_MASTER_MODE_SELECT) == ERROR);//·Ç×èÈûÊ½³ÌĞòÒªÅĞ¶Ï±êÖ¾Î»
+	while(I2C_CheckEvent(I2C2, I2C_EVENT_MASTER_MODE_SELECT) == ERROR);//éé˜»å¡å¼ç¨‹åºè¦åˆ¤æ–­æ ‡å¿—ä½
 	
-	I2C_Send7bitAddress(I2C2, MPU6050_Address, I2C_Direction_Receiver);//·¢ËÍ´Ó»úµØÖ·£¨×Ô´ø½ÓÊÜÓ¦´ğ£©
+	I2C_Send7bitAddress(I2C2, MPU6050_Address, I2C_Direction_Receiver);//å‘é€ä»æœºåœ°å€ï¼ˆè‡ªå¸¦æ¥å—åº”ç­”ï¼‰
 	
 	while(I2C_CheckEvent(I2C2, I2C_EVENT_MASTER_RECEIVER_MODE_SELECTED) == ERROR);
 	
-	I2C_AcknowledgeConfig(I2C2, DISABLE);//ACKÖÃ0 ÎŞÓ¦´ğ
+	I2C_AcknowledgeConfig(I2C2, DISABLE);//ACKç½®0 æ— åº”ç­”
 	
-	I2C_GenerateSTOP(I2C2, ENABLE);//Í£Ö¹Î»
+	I2C_GenerateSTOP(I2C2, ENABLE);//åœæ­¢ä½
 	
 	while(I2C_CheckEvent(I2C2, I2C_EVENT_MASTER_BYTE_RECEIVED) == ERROR);
 
 	Data = I2C_ReceiveData(I2C2);
 	
-	I2C_AcknowledgeConfig(I2C2, ENABLE);//ACKÖÃ1 Ä¬ÈÏ×´Ì¬
+	I2C_AcknowledgeConfig(I2C2, ENABLE);//ACKç½®1 é»˜è®¤çŠ¶æ€
 	
 	return Data;
 }
@@ -102,7 +102,7 @@ void MPU6050_Init(void)
 	
 	GPIO_InitTypeDef GPIO_InitStructure;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_OD;
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_10|GPIO_Pin_11;//¸´ÓÃ¿ªÂ©Ä£Ê½
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_10|GPIO_Pin_11;//å¤ç”¨å¼€æ¼æ¨¡å¼
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	
 	GPIO_Init(GPIOB, &GPIO_InitStructure);
@@ -126,15 +126,15 @@ void MPU6050_Init(void)
 	MPU6050_WriteReg(MPU6050_ACCEL_CONFIG, 0x18);
 }
 
-//¶à·µ»ØÖµº¯Êı £¨6¸öÈ«¾Ö±äÁ¿£»Ö¸ÕëÊµÏÖ±äÁ¿µØÖ·´«µİ£»½á¹¹Ìå£©
+//å¤šè¿”å›å€¼å‡½æ•° ï¼ˆ6ä¸ªå…¨å±€å˜é‡ï¼›æŒ‡é’ˆå®ç°å˜é‡åœ°å€ä¼ é€’ï¼›ç»“æ„ä½“ï¼‰
 void MPU6050_GetData(int16_t *AccX, int16_t *AccY, int16_t *AccZ, 
 	int16_t *GyroX, int16_t *GyroY, int16_t *GyroZ)
 {
 	uint8_t DATAH, DATAL;
 	
-	DATAH = MPU6050_ReadReg(MPU6050_ACCEL_XOUT_H);//¼ÓËÙ¶È¼ÆXÖá¸ß8Î»Êı¾İ
-	DATAL = MPU6050_ReadReg(MPU6050_ACCEL_XOUT_L);//¼ÓËÙ¶È¼ÆXÖáµÍ8Î»Êı¾İ
-	*AccX = (DATAH << 8) | DATAL;//¼ÓËÙ¶È¼ÆXÖáµÄ16Î»Êı¾İ
+	DATAH = MPU6050_ReadReg(MPU6050_ACCEL_XOUT_H);//åŠ é€Ÿåº¦è®¡Xè½´é«˜8ä½æ•°æ®
+	DATAL = MPU6050_ReadReg(MPU6050_ACCEL_XOUT_L);//åŠ é€Ÿåº¦è®¡Xè½´ä½8ä½æ•°æ®
+	*AccX = (DATAH << 8) | DATAL;//åŠ é€Ÿåº¦è®¡Xè½´çš„16ä½æ•°æ®
 	
 	DATAH = MPU6050_ReadReg(MPU6050_ACCEL_YOUT_H);
 	DATAL = MPU6050_ReadReg(MPU6050_ACCEL_YOUT_L);
@@ -144,9 +144,9 @@ void MPU6050_GetData(int16_t *AccX, int16_t *AccY, int16_t *AccZ,
 	DATAL = MPU6050_ReadReg(MPU6050_ACCEL_ZOUT_L);
 	*AccZ = (DATAH << 8) | DATAL;
 	
-	DATAH = MPU6050_ReadReg(MPU6050_GYRO_XOUT_H);//ÍÓÂİÒÇXÖá¸ß8Î»Êı¾İ
-	DATAL = MPU6050_ReadReg(MPU6050_GYRO_XOUT_L);//ÍÓÂİÒÇXÖáµÍ8Î»Êı¾İ
-	*GyroX = (DATAH << 8) | DATAL;//ÍÓÂİÒÇXÖá16Î»Êı¾İ
+	DATAH = MPU6050_ReadReg(MPU6050_GYRO_XOUT_H);//é™€èºä»ªXè½´é«˜8ä½æ•°æ®
+	DATAL = MPU6050_ReadReg(MPU6050_GYRO_XOUT_L);//é™€èºä»ªXè½´ä½8ä½æ•°æ®
+	*GyroX = (DATAH << 8) | DATAL;//é™€èºä»ªXè½´16ä½æ•°æ®
 	
 	DATAH = MPU6050_ReadReg(MPU6050_GYRO_YOUT_H);
 	DATAL = MPU6050_ReadReg(MPU6050_GYRO_YOUT_L);

@@ -1,43 +1,43 @@
 #include "stm32f10x.h"                  // Device header
 
-//extern uint16_t num; //¿çÎÄ¼ş±äÁ¿
+//extern uint16_t num; //è·¨æ–‡ä»¶å˜é‡
  
-void Timer_Init(void) //¶¨Ê±ÖĞ¶Ï³õÊ¼»¯
+void Timer_Init(void) //å®šæ—¶ä¸­æ–­åˆå§‹åŒ–
 {
 	
-	TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure; //¶¨Òå½á¹¹Ìå±äÁ¿
+	TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure; //å®šä¹‰ç»“æ„ä½“å˜é‡
 	NVIC_InitTypeDef NVIC_InitTypeStructure;
 	
 	
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
-//	TIM_InternalClockConfig(TIM2);//ÅäÖÃÊ±»ùµ¥ÔªÊ±ÖÓ£¨ÄÚ²¿Ê±ÖÓ£©
+//	TIM_InternalClockConfig(TIM2);//é…ç½®æ—¶åŸºå•å…ƒæ—¶é’Ÿï¼ˆå†…éƒ¨æ—¶é’Ÿï¼‰
 	
 	
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
 	GPIO_InitTypeDef GPIO_InitStructure;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; //ÉÏÀ­ÊäÈë
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; //ä¸Šæ‹‰è¾“å…¥
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
 	
 	
-	TIM_ETRClockMode2Config(TIM2, TIM_ExtTRGPSC_OFF, TIM_ExtTRGPolarity_NonInverted, 0x00);//ETRÍâ²¿Ê±ÖÓÄ£Ê½2 A0
+	TIM_ETRClockMode2Config(TIM2, TIM_ExtTRGPSC_OFF, TIM_ExtTRGPolarity_NonInverted, 0x00);//ETRå¤–éƒ¨æ—¶é’Ÿæ¨¡å¼2 A0
 	
 	
 	
-	TIM_TimeBaseInitStructure.TIM_ClockDivision = TIM_CKD_DIV1; //²ÉÑùÊ±ÖÓ·ÖÆµ 
-	TIM_TimeBaseInitStructure.TIM_CounterMode = TIM_CounterMode_Up; //¼ÆÊıÆ÷Ä£Ê½:ÏòÉÏ¼ÆÊı
+	TIM_TimeBaseInitStructure.TIM_ClockDivision = TIM_CKD_DIV1; //é‡‡æ ·æ—¶é’Ÿåˆ†é¢‘ 
+	TIM_TimeBaseInitStructure.TIM_CounterMode = TIM_CounterMode_Up; //è®¡æ•°å™¨æ¨¡å¼:å‘ä¸Šè®¡æ•°
 	
-	//Ê±»ùµ¥Ôª¼Ä´æÆ÷ÊıÖµ
-	TIM_TimeBaseInitStructure.TIM_Period = 10 - 1; //ARR×Ô¶¯ÖØ×°Æ÷
-	TIM_TimeBaseInitStructure.TIM_Prescaler = 1 - 1; //PSCÔ¤·ÖÅäÆ÷
-	TIM_TimeBaseInitStructure.TIM_RepetitionCounter = 0; //REPÖØ¸´´ÎÊı¼ÆÊıÆ÷   
+	//æ—¶åŸºå•å…ƒå¯„å­˜å™¨æ•°å€¼
+	TIM_TimeBaseInitStructure.TIM_Period = 10 - 1; //ARRè‡ªåŠ¨é‡è£…å™¨
+	TIM_TimeBaseInitStructure.TIM_Prescaler = 1 - 1; //PSCé¢„åˆ†é…å™¨
+	TIM_TimeBaseInitStructure.TIM_RepetitionCounter = 0; //REPé‡å¤æ¬¡æ•°è®¡æ•°å™¨   
 	
 	TIM_TimeBaseInit(TIM2, &TIM_TimeBaseInitStructure);
 	
 	
-	TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE); //Ê¹ÄÜ¸üĞÂÖĞ¶Ï
+	TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE); //ä½¿èƒ½æ›´æ–°ä¸­æ–­
 	
 	//NVIC
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
@@ -45,12 +45,12 @@ void Timer_Init(void) //¶¨Ê±ÖĞ¶Ï³õÊ¼»¯
 	
 	NVIC_InitTypeStructure.NVIC_IRQChannel = TIM2_IRQn;
 	NVIC_InitTypeStructure.NVIC_IRQChannelCmd = ENABLE;
-	NVIC_InitTypeStructure.NVIC_IRQChannelPreemptionPriority = 2; //ÇÀÕ¼ÓÅÏÈ¼¶
-	NVIC_InitTypeStructure.NVIC_IRQChannelSubPriority = 1; //ÏàÓ¦ÓÅÏÈ¼¶
+	NVIC_InitTypeStructure.NVIC_IRQChannelPreemptionPriority = 2; //æŠ¢å ä¼˜å…ˆçº§
+	NVIC_InitTypeStructure.NVIC_IRQChannelSubPriority = 1; //ç›¸åº”ä¼˜å…ˆçº§
 	
 	NVIC_Init(&NVIC_InitTypeStructure);
 	
-	TIM_Cmd(TIM2, ENABLE); //Æô¶¯¶¨Ê±Æ÷
+	TIM_Cmd(TIM2, ENABLE); //å¯åŠ¨å®šæ—¶å™¨
 	
 
 }
@@ -63,10 +63,10 @@ uint16_t Timer_GetCounter(void)
 
 //void TIM2_IRQHandler(void)
 //{
-//	if (TIM_GetITStatus(TIM2, TIM_IT_Update) == SET) //¸üĞÂÖĞ¶Ï
+//	if (TIM_GetITStatus(TIM2, TIM_IT_Update) == SET) //æ›´æ–°ä¸­æ–­
 //	{
 
-//		TIM_ClearITPendingBit(TIM2, TIM_IT_Update); //Çå³ı±êÖ¾Î»
+//		TIM_ClearITPendingBit(TIM2, TIM_IT_Update); //æ¸…é™¤æ ‡å¿—ä½
 //			
 //	}
 //	

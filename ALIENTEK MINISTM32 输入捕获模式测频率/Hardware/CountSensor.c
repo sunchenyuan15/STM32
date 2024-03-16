@@ -9,28 +9,28 @@ void CountSensor_Init(void)
 	EXTI_InitTypeDef EXIT_InitStructure;
 	NVIC_InitTypeDef NVIC_InitStructure;
 	
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);//¿ªÆôGPIOÊ±ÖÓ
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);//¿ªÆôAFIOÊ±ÖÓ
-	////EXTI NVICÊ±ÖÓÊ¼ÖÕ¿ªÆô
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);//å¼€å¯GPIOæ—¶é’Ÿ
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);//å¼€å¯AFIOæ—¶é’Ÿ
+	////EXTI NVICæ—¶é’Ÿå§‹ç»ˆå¼€å¯
 		
 	
-	//ÅäÖÃGPIO
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;//ÉÏÀ­ÊäÈë
+	//é…ç½®GPIO
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;//ä¸Šæ‹‰è¾“å…¥
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_15;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
 	
-	//ÅäÖÃAFIO
+	//é…ç½®AFIO
 	GPIO_EXTILineConfig(GPIO_PortSourceGPIOA, GPIO_PinSource15);
 	
-	//ÅäÖÃEXTI
+	//é…ç½®EXTI
 	EXIT_InitStructure.EXTI_Line = EXTI_Line15;
 	EXIT_InitStructure.EXTI_LineCmd = ENABLE;
 	EXIT_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;
-	EXIT_InitStructure.EXTI_Trigger = EXTI_Trigger_Falling;//ÏÂ½µÑØ´¥·¢
+	EXIT_InitStructure.EXTI_Trigger = EXTI_Trigger_Falling;//ä¸‹é™æ²¿è§¦å‘
 	EXTI_Init(&EXIT_InitStructure);
 	
-	//ÅäÖÃNVIC
+	//é…ç½®NVIC
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 	
 	NVIC_InitStructure.NVIC_IRQChannel = EXTI15_10_IRQn;
@@ -40,9 +40,9 @@ void CountSensor_Init(void)
 	NVIC_Init(&NVIC_InitStructure);	
 	
 }
-//Íâ²¿ÖĞ¶ÏĞÅºÅ GPIO->AFIO->EXTI->NVIC->CPU
+//å¤–éƒ¨ä¸­æ–­ä¿¡å· GPIO->AFIO->EXTI->NVIC->CPU
 
-uint16_t CountSensor_Get(void)//·µ»Ø±äÁ¿Öµ
+uint16_t CountSensor_Get(void)//è¿”å›å˜é‡å€¼
 {
 	return CountSensor_Count;
 	
@@ -50,11 +50,11 @@ uint16_t CountSensor_Get(void)//·µ»Ø±äÁ¿Öµ
 
 void EXTI15_10_IRQHandler(void)
 {
-	if(EXTI_GetITStatus(EXTI_Line15) == SET)//ÖĞ¶Ï±êÖ¾Î»ÅĞ¶Ï È·±£ÊÇ¶¨ÒåµÄÖĞ¶ÏÔ´´¥·¢µÄÖĞ¶Ïº¯Êı
+	if(EXTI_GetITStatus(EXTI_Line15) == SET)//ä¸­æ–­æ ‡å¿—ä½åˆ¤æ–­ ç¡®ä¿æ˜¯å®šä¹‰çš„ä¸­æ–­æºè§¦å‘çš„ä¸­æ–­å‡½æ•°
 	{
 		CountSensor_Count ++;
 		
-		EXTI_ClearITPendingBit(EXTI_Line15);//ÖĞ¶Ï±êÖ¾Î»Çå³ı
+		EXTI_ClearITPendingBit(EXTI_Line15);//ä¸­æ–­æ ‡å¿—ä½æ¸…é™¤
 	}
 	
 }

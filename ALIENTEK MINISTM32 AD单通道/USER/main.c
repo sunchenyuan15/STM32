@@ -16,8 +16,8 @@ float Voltage;
 int main(void)
 {
 	
-	delay_init();	    	 //ÑÓÊ±º¯Êı³õÊ¼»¯	  
-	uart_init(9600);	 	 //´®¿Ú³õÊ¼»¯Îª9600
+	delay_init();	    	 //å»¶æ—¶å‡½æ•°åˆå§‹åŒ–	  
+	uart_init(9600);	 	 //ä¸²å£åˆå§‹åŒ–ä¸º9600
 	LCD_Init();
 	
 	AD_Init();
@@ -31,11 +31,11 @@ int main(void)
 	while(1)
 	{
 		
-		LCD_ShowxNum(100,70,AD_GetValue(),5,24,0); //ÏÔÊ¾adcÊıÖµ
+		LCD_ShowxNum(100,70,AD_GetValue(),5,24,0); //æ˜¾ç¤ºadcæ•°å€¼
 		
 		Voltage = (float)AD_GetValue() / 4095 * 3.3;
 		
-		LCD_ShowxNum(100,100,Voltage*100,5,24,0); //ÏÔÊ¾µçÑ¹
+		LCD_ShowxNum(100,100,Voltage*100,5,24,0); //æ˜¾ç¤ºç”µå‹
 		
 	}
 }

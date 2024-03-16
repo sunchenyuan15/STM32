@@ -7,31 +7,31 @@
 //1024 Byte
 uint16_t Store_Data[Store_Count];
 
-//³õÊ¼»¯ÉÁ´æ ×îºóÒ»Ò³
+//åˆå§‹åŒ–é—ªå­˜ æœ€åä¸€é¡µ
 void Store_Init(void)
 {
-	if(MyFLASH_ReadHalfWord(0x0800FC00) != 0xA5A5 )//µÚÒ»´ÎÊ¹ÓÃ
+	if(MyFLASH_ReadHalfWord(0x0800FC00) != 0xA5A5 )//ç¬¬ä¸€æ¬¡ä½¿ç”¨
 	{
-		MyFlash_ErasePage(0x0800FC00);//²Á³ı×îºóÒ»Ò³
-		MyFlash_ProgramHalfWord(0x0800FC00, 0xA5A5);//×îºóÒ»Ò³µÚÒ»¸ö°ë×Ö
+		MyFlash_ErasePage(0x0800FC00);//æ“¦é™¤æœ€åä¸€é¡µ
+		MyFlash_ProgramHalfWord(0x0800FC00, 0xA5A5);//æœ€åä¸€é¡µç¬¬ä¸€ä¸ªåŠå­—
 		for(uint16_t i = 1; i<Store_Count; i++)
 		{
-			MyFlash_ProgramHalfWord(0x0800FC00 + i*2, 0x0000);//Ò»¸ö°ë×Ö2¸ö×Ö½Ú£¬Õ¼Á½¸öµØÖ·
+			MyFlash_ProgramHalfWord(0x0800FC00 + i*2, 0x0000);//ä¸€ä¸ªåŠå­—2ä¸ªå­—èŠ‚ï¼Œå ä¸¤ä¸ªåœ°å€
 		}
 	}
 	
 	for(uint16_t i = 0; i<Store_Count; i++)
 	{
-		Store_Data[i] = MyFLASH_ReadHalfWord(0x0800FC00 + i*2);//ÉÁ´æÊı¾İ»Ö¸´ÖÁSRAMÊı×é
+		Store_Data[i] = MyFLASH_ReadHalfWord(0x0800FC00 + i*2);//é—ªå­˜æ•°æ®æ¢å¤è‡³SRAMæ•°ç»„
 	}
 }  
 
 void Store_Save(void)
 {
-	MyFlash_ErasePage(0x0800FC00);//²Á³ı×îºóÒ»Ò³
+	MyFlash_ErasePage(0x0800FC00);//æ“¦é™¤æœ€åä¸€é¡µ
 	for(uint16_t i = 0; i<Store_Count; i++)
 	{
-		MyFlash_ProgramHalfWord(0x0800FC00 + i*2, Store_Data[i]);//SRAMÊı¾İ±¸·İÖÁÉÁ´æ×îºóÒ»Ò³
+		MyFlash_ProgramHalfWord(0x0800FC00 + i*2, Store_Data[i]);//SRAMæ•°æ®å¤‡ä»½è‡³é—ªå­˜æœ€åä¸€é¡µ
 	}
 }
 

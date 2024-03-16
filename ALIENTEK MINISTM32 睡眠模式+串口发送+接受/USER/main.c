@@ -17,8 +17,8 @@ uint8_t Rxdata;
 int main(void)
 {
 	
-	delay_init();	    	 //ÑÓÊ±º¯Êı³õÊ¼»¯	  
-	uart_init(9600);	 	 //´®¿Ú³õÊ¼»¯Îª9600
+	delay_init();	    	 //å»¶æ—¶å‡½æ•°åˆå§‹åŒ–	  
+	uart_init(9600);	 	 //ä¸²å£åˆå§‹åŒ–ä¸º9600
 	LCD_Init();
 	POINT_COLOR=RED;
 	
@@ -39,9 +39,9 @@ int main(void)
 //	
 //	printf("Num=%d\r\n", 666);
 	
-	//sprintfÖ¸¶¨´òÓ¡Î»ÖÃ ²»Éæ¼°ÖØ¶¨Ïò
+	//sprintfæŒ‡å®šæ‰“å°ä½ç½® ä¸æ¶‰åŠé‡å®šå‘
 //	char String[100];
-//	sprintf(String, "Num=%d\r\n", 666);//½«¸ñÊ½»¯µÄÊı¾İĞ´Èë×Ö·û´®ÖĞ
+//	sprintf(String, "Num=%d\r\n", 666);//å°†æ ¼å¼åŒ–çš„æ•°æ®å†™å…¥å­—ç¬¦ä¸²ä¸­
 //	Serial_SendString(String);
 	
 	//
@@ -50,11 +50,11 @@ int main(void)
 	
 	while(1)
 	{
-//		//´®¿Ú½ÓÊÜ ²éÑ¯·½·¨
+//		//ä¸²å£æ¥å— æŸ¥è¯¢æ–¹æ³•
 //		if (USART_GetFlagStatus(USART1, USART_FLAG_RXNE) == SET)
 //		{
 //			Rxdata = USART_ReceiveData(USART1);
-//			LCD_ShowxNum(30,70,Rxdata ,4,24,0); //ÏÔÊ¾ÊıÖµ
+//			LCD_ShowxNum(30,70,Rxdata ,4,24,0); //æ˜¾ç¤ºæ•°å€¼
 //		}
 		
 		
@@ -63,17 +63,17 @@ int main(void)
 		LCD_ShowString(30,100,200,24,24,"       ");
 		delay_ms(500);	
 		
-		//´®¿Ú½ÓÊÜ ÖĞ¶Ï·½·¨
+		//ä¸²å£æ¥å— ä¸­æ–­æ–¹æ³•
 		if (Serial_GetRxflag() == 1)
 		{
 			Rxdata = Serial_GetRxdata();
 			Serial_SendByte(Rxdata);
-			LCD_ShowxNum(30,70,Rxdata ,4,24,0); //ÏÔÊ¾ÊıÖµ
+			LCD_ShowxNum(30,70,Rxdata ,4,24,0); //æ˜¾ç¤ºæ•°å€¼
 		}
 		
 		
-		//ÅäÖÃË¯ÃßÄ£Ê½ Ò»°ãÊ¡µç		
-		__WFI();//ÖĞ¶Ï»½ĞÑ
+		//é…ç½®ç¡çœ æ¨¡å¼ ä¸€èˆ¬çœç”µ		
+		__WFI();//ä¸­æ–­å”¤é†’
 	}
 }
  
